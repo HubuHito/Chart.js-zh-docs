@@ -1,10 +1,10 @@
 ---
-title: Integration
+title: 集成
 ---
 
-Chart.js can be integrated with plain JavaScript or with different module loaders. The examples below show how to load Chart.js in different systems.
+Chart.js 可以通过原生的 JavaScript 或者JS模块方式集成，如下：
 
-## Script Tag
+## Script
 
 ```html
 <script src="path/to/chartjs/dist/chart.js"></script>
@@ -22,9 +22,9 @@ var myChart = new Chart(ctx, {...});
 
 ## Bundlers (Webpack, Rollup, etc.)
 
-Chart.js 3 is tree-shakeable, so it is necessary to import and register the controllers, elements, scales and plugins you are going to use.
+Chart.js 支持 `tree-shakeable` 特性，你可以按需注册 controllers、elements、scales 和 plugins。
 
-For all available imports see the example below.
+全量引入可参考下面方式：
 ```javascript
 import {
   Chart,
@@ -82,7 +82,9 @@ var myChart = new Chart(ctx, {...});
 
 ## Require JS
 
-**Important:** RequireJS [can **not** load CommonJS module as is](https://requirejs.org/docs/commonjs.html#intro), so be sure to require one of the UMD builds instead (i.e. `dist/chart.js`, `dist/chart.min.js`, etc.).
+::: warning
+RequireJS [不能加载CommonJS模块](https://requirejs.org/docs/commonjs.html#intro)，所以需要通过构建 UMD 的包替代（eg：`dist/chart.js`, `dist/chart.min.js`）。
+:::
 
 ```javascript
 require(['path/to/chartjs/dist/chart.min.js'], function(Chart){
@@ -90,7 +92,9 @@ require(['path/to/chartjs/dist/chart.min.js'], function(Chart){
 });
 ```
 
-**Note:** in order to use the time scale, you need to make sure [one of the available date adapters](https://github.com/chartjs/awesome#adapters) and corresponding date library are fully loaded **after** requiring Chart.js. For this you can use nested requires:
+::: tip
+时间类型的坐标轴需要提前配置[时间适配器](https://github.com/chartjs/awesome#adapters)，并且引入顺序要在 Chart.js **之后**。示例如下：
+:::
 
 ```javascript
 require(['chartjs'], function(Chart) {

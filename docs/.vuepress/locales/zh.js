@@ -6,12 +6,27 @@ module.exports = {
   lastUpdated: '上次更新',
   nav: [
       { text: '首页', link: '/zh/' },
-      { text: '指南', link: '/zh/getting-started/' }
+      { text: '指南', link: '/zh/guide/getting-started/' }
   ],
   sidebar: {
-    '/zh/getting-started/': [
-      '',
-      'installation'
+    '/zh/guide/': [
+      {
+        title: '入门',
+        collapsable: false,
+        children: [
+          'getting-started/',
+          'getting-started/installation',
+          'getting-started/integration',
+          'getting-started/usage'
+        ]
+      },
+      {
+        title: '通用配置',
+        collapsable: false,
+        children: [
+          
+        ]
+      }
     ]
   }
 }

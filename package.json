@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "@mdx-js/vue-loader": "^1.6.22",
     "eslint": "^7.18.0",
     "eslint-plugin-vue": "^7.5.0",
     "vuepress": "^1.8.0",

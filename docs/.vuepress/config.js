@@ -5,6 +5,7 @@ module.exports = {
   head: [
       ['link', { rel: 'icon', href: `/favicon.png` }],
   ],
+  // patterns: ['**/*.md', '**/*.vue', '**/*.mdx'],
   plugins: [
       ['redirect', {
           redirectors: [
@@ -53,5 +54,17 @@ module.exports = {
           '/en/': require('./locales/en.js'),
           '/zh/': require('./locales/zh.js')
       }
-  }
+  },
+  // configureWebpack: (config, isServer) => {
+  //   return {
+  //     module: {
+  //       rules: [
+  //         {
+  //           test: /.mdx?$/,
+  //           use: ['babel-loader', '@mdx-js/vue-loader']
+  //         }
+  //       ]
+  //     }
+  //   }
+  // }
 }
