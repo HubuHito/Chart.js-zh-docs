@@ -10,11 +10,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "chart.js": "^3.0.0-beta.9"
+  },
   "devDependencies": {
     "@mdx-js/vue-loader": "^1.6.22",
     "eslint": "^7.18.0",
     "eslint-plugin-vue": "^7.5.0",
+    "vue-prism-editor": "^1.2.2",
+    "vue2-perfect-scrollbar": "^1.5.0",
     "vuepress": "^1.8.0",
     "vuepress-plugin-redirect": "^1.2.5"
   }

@@ -24,7 +24,24 @@ module.exports = {
         title: '通用配置',
         collapsable: false,
         children: [
-          
+          'general/data-structures',
+          'general/accessibility',
+          'general/responsive',
+          'general/device-pixel-ratio',
+          {
+            title: '交互',
+            collapsable: false,
+            children: [
+              'general/interactions/',
+              'general/interactions/events',
+              'general/interactions/modes'
+            ]
+          },
+          'general/options',
+          'general/colors',
+          'general/fonts',
+          'general/performance',
+          'general/locale'
         ]
       }
     ]

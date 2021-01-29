@@ -1,12 +1,12 @@
 ---
-title: Options
+title: 配置项
 ---
 
-## Scriptable Options
+## 脚本选项
 
-Scriptable options also accept a function which is called for each of the underlying data values and that takes the unique argument `context` representing contextual information (see [option context](options.md#option-context)).
+脚本类型选项接受一个函数，每个数据项都会调用函数，回调参数(参见[选项上下文](options.md#上下文对象))。
 
-Example:
+例子:
 
 ```javascript
 color: function(context) {
@@ -18,9 +18,9 @@ color: function(context) {
 }
 ```
 
-## Indexable Options
+## 索引选项
 
-Indexable options also accept an array in which each item corresponds to the element at the same index. Note that if there are less items than data, the items are looped over. In many cases, using a [function](#scriptable-options) is more appropriate if supported.
+索引类型的选项接受一个数组，其中每个数据项对应于同一索引处的值。注意，如果数据项少于数组长度，则将被循环。在大多数情况下，推荐使用[脚本选项]（＃脚本选项）。
 
 Example:
 
@@ -34,12 +34,15 @@ color: [
 ]
 ```
 
-## Option Context
+## 上下文对象
 
-The option context is used to give contextual information when resolving options and currently only applies to [scriptable options](#scriptable-options).
-The object is preserved, so it can be used to store and pass information between calls.
+脚本类型的配置项提供`context`回调参数，用于提供当前上下文信息。
 
-There are multiple levels of context objects:
+::: tip
+修改对象时会修改原始值，其他数据项调用时也会被修改。
+:::
+
+有如下几种不同级别的上下文对象：
 
 - `chart`
   - `dataset`
@@ -47,47 +50,50 @@ There are multiple levels of context objects:
   - `scale`
     - `tick`
 
-Each level inherits its parent(s) and any contextual information stored in the parent is available through the child.
 
-The context object contains the following properties:
+::: tip
+每个级别都继承其父级，并且可以通过子级获得存储在父级中的任何上下文信息。
+:::
+
+上下文对象包含以下属性：
 
 ### chart
 
-- `chart`: the associated chart
+- `chart`: 图表实例
 - `type`: `'chart'`
 
 ### dataset
 
-In addition to [chart](#chart)
+除了继承[chart](#chart)属性之外，还有如下属性：
 
-- `active`: true if element is active (hovered)
-- `dataset`: dataset at index `datasetIndex`
-- `datasetIndex`: index of the current dataset
-- `index`: getter for `datasetIndex`
+- `active`: 如果元素处于active状态（hover），则返回true。
+- `dataset`: `datasetIndex` 索引处的数据集。
+- `datasetIndex`: 当前数据集的索引。
+- `index`: `datasetIndex`的别名.
 - `type`: `'dataset'`
 
 ### data
 
-In addition to [dataset](#dataset)
+除了继承[dataset](#dataset)属性之外，还有如下属性：
 
-- `active`: true if element is active (hovered)
-- `dataIndex`: index of the current data
-- `dataPoint`: the parsed data values for the given `dataIndex` and `datasetIndex`
-- `element`: the element (point, arc, bar, etc.) for this data
-- `index`: getter for `dataIndex`
+- `active`: 如果元素处于active状态（hover），则返回true。
+- `dataIndex`: 当前数据集的索引。
+- `dataPoint`: 根据`dataIndex` 和 `datasetIndex` 解析过的数据。
+- `element`: 当前数据项对应的元素（point, arc, bar等）。
+- `index`: `datasetIndex`的别名.
 - `type`: `'data'`
 
 ### scale
 
-In addition to [chart](#chart)
+除了继承[chart](#chart)属性之外，还有如下属性：
 
-- `scale`: the associated scale
+- `scale`: 图表实例
 - `type`: `'scale'`
 
 ### tick
 
-In addition to [scale](#scale)
+除了继承[scale](#scale)属性之外，还有如下属性：
 
-- `tick`: the associated tick object
-- `index`: tick index
+- `tick`: tick对象
+- `index`: tick索引
 - `type`: `'tick'`

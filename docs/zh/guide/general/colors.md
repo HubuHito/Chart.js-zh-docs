@@ -1,22 +1,24 @@
 ---
-title: Colors
+title: 颜色
 ---
 
-When supplying colors to Chart options, you can use a number of formats. You can specify the color as a string in hexadecimal, RGB, or HSL notations. If a color is needed, but not specified, Chart.js will use the global default color. There are 3 color options, stored at `Chart.defaults`, to set:
+颜色相关的配置项支持十六进制格式、RGB格式和HSL格式。如果没有指定颜色，则会使用默认全局配置的颜色，`Chart.defaults`有3个颜色相关配置项：
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `backgroundColor` | `Color` | `rgba(0, 0, 0, 0.1)` | Background color.
-| `borderColor` | `Color` | `rgba(0, 0, 0, 0.1)` | Border color.
-| `color` | `Color` | `#666` | Font color.
+| `backgroundColor` | `Color` | `rgba(0, 0, 0, 0.1)` | 背景色
+| `borderColor` | `Color` | `rgba(0, 0, 0, 0.1)` | 边框色
+| `color` | `Color` | `#666` | 字体色
 
-You can also pass a [CanvasGradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) object. You will need to create this before passing to the chart, but using it you can achieve some interesting effects.
+::: tip
+颜色配置项支持[CanvasGradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient)对象，可以用它来实现渐变效果。
+:::
 
-## Patterns and Gradients
+## 模式和渐变
 
-An alternative option is to pass a [CanvasPattern](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern) or [CanvasGradient](https://developer.mozilla.org/en/docs/Web/API/CanvasGradient) object instead of a string colour.
+颜色类型的配置项支持[CanvasPattern](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern) 或 [CanvasGradient](https://developer.mozilla.org/en/docs/Web/API/CanvasGradient)对象。
 
-For example, if you wanted to fill a dataset with a pattern from an image you could do the following.
+例如，你可以用一个图片填充数据集。如下：
 
 ```javascript
 var img = new Image();
@@ -37,9 +39,9 @@ img.onload = function() {
 };
 ```
 
-Using pattern fills for data graphics can help viewers with vision deficiencies (e.g. color-blindness or partial sight) to [more easily understand your data](http://betweentwobrackets.com/data-graphics-and-colour-vision/).
+使用图片填充数据集有助于视力障碍者观看图表，查看[如何让数据更容易理解](http://betweentwobrackets.com/data-graphics-and-colour-vision/)。
 
-Using the [Patternomaly](https://github.com/ashiguruma/patternomaly) library you can generate patterns to fill datasets.
+使用[Patternomaly](https://github.com/ashiguruma/patternomaly)库，可以方便给数据集配置各种模式。
 
 ```javascript
 var chartData = {

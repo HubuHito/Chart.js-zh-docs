@@ -1,25 +1,27 @@
 ---
-title: Locale
+title: 本地化
 ---
 
-For applications where the numbers of ticks on scales must be formatted accordingly with a language sensitive number formatting, you can enable this kind of formatting by setting the `locale` option.
+对于坐标轴数字需要根据当前语言进行本地格式化的，可以使用`locale`配置。
 
-The locale is a string that is a [Unicode BCP 47 locale identifier](https://www.unicode.org/reports/tr35/tr35.html#BCP_47_Conformance).
+可通过[Unicode BCP 47](https://www.unicode.org/reports/tr35/tr35.html#BCP_47_Conformance)字符串区分语言环境。
 
-A Unicode BCP 47 locale identifier consists of
+Unicode BCP 47 语言标识包括：
 
-  1. a language code,
-  2. (optionally) a script code,
-  3. (optionally) a region (or country) code,
-  4. (optionally) one or more variant codes, and
-  5. (optionally) one or more extension sequences,
+  1. 语言代码，
+  2. （可选）脚本代码，
+  3. （可选）地区（或国家）代码，
+  4. （可选） 一个或多个变体代码，
+  5. （可选）一个或者多个扩展序列
 
-with all present components separated by hyphens. 
+所有上面的代码通过连字符隔开。
 
-By default the chart is using the default locale of the platform which is running on.
+::: tip
+默认情况下，图表使用运行平台的默认语言环境。
+:::
 
-## Configuration Options
+## 配置项
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `locale` | `string` | `undefined` | a string with a BCP 47 language tag, leveraging on [INTL NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).
+| `locale` | `string` | `undefined` | BCP 47语言代码 [INTL NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).

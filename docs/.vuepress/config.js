@@ -13,21 +13,21 @@ module.exports = {
               { base: '/', alternative: ['zh/'] },
           ],
       }],
-      // [require('./plugins/chart-editor'), {
-      //     defaults: {
-      //         plugins: {
-      //             legend: {
-      //                 display: false
-      //             },
-      //             title: {
-      //                 display: false
-      //             },
-      //             tooltip: {
-      //                 enabled: false
-      //             },
-      //         }
-      //     }
-      // }]
+      [require('./plugins/chart-editor'), {
+          defaults: {
+              // plugins: {
+              //     legend: {
+              //         display: false
+              //     },
+              //     title: {
+              //         display: false
+              //     },
+              //     tooltip: {
+              //         enabled: false
+              //     },
+              // }
+          }
+      }]
   ],
   locales: {
       '/en/': {

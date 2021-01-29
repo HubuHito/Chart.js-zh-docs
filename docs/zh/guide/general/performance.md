@@ -1,43 +1,43 @@
 ---
-title: Performance
+title: 性能
 ---
 
-Chart.js charts are rendered on `canvas` elements, which makes rendering quite fast. For large datasets or performance sensitive applications, you may wish to consider the tips below.
+Chart.js 是使用 `canvas` 渲染的，渲染速度一般情况下会很快。但对于大量数据的情况，可参考下面优化技巧：
 
-## Data structure and format
+## 数据结构和格式
 
-### Parsing
+### 提前解析
 
-Provide prepared data in the internal format accepted by the dataset and scales and set `parsing: false`. See [Data structures](data-structures.md) for more information.
+提供可以直接使用数据项，并设置`parsing: false`，查看[数据结构](data-structures.md)。
 
-### Data normalization
+### 数据序列化
 
-Chart.js is fastest if you provide data with indices that are unique, sorted, and consistent across datasets and provide the `normalized: true` option to let Chart.js know that you have done so. Even without this option, it can sometimes still be faster to provide sorted data.
+可以提前排序数据源，让每一项唯一并且有序，然后设置`normalized: true`可加快图表渲染。
 
-### Decimation
+### 数据采样
 
-Decimating your data will achieve the best results. When there is a lot of data to display on the graph, it doesn't make sense to show tens of thousands of data points on a graph that is only a few hundred pixels wide.
+大量数据全部渲染在图表上，其实意义不大，可适当抽样取点。
 
-There are many approaches to data decimation and selection of an algorithm will depend on your data and the results you want to achieve. For instance, [min/max](https://digital.ni.com/public.nsf/allkb/F694FFEEA0ACF282862576020075F784) decimation will preserve peaks in your data but could require up to 4 points for each pixel. This type of decimation would work well for a very noisy signal where you need to see data peaks.
+::: tip
+数据抽取的方法很多，选择什么算法将取决于数据和你想要的结果。例如：[min/max](https://digital.ni.com/public.nsf/allkb/F694FFEEA0ACF282862576020075F784)算法将保留数据中的峰值，但每个像素最多可能需要4个点，对于需要查看峰值的图表很有用。
+:::
 
-Line charts are able to do [automatic data decimation during draw](#automatic-data-decimation-during-draw), when certain conditions are met. You should still consider decimating data yourself before passing it in for maximum performance since the automatic decimation occurs late in the chart life cycle.
+折线图在一定要条件下会自动进行[数据采样](#数据采样)，但是自动触发的条件在图表生命周期的后期，因此最好的方式还是在图表初始化之前进行数据采样。
 
-## Tick Calculation
+## 刻度计算
 
-### Rotation
+### 旋转
 
-[Specify a rotation value](./axes/cartesian/index.mdx#tick-configuration) by setting `minRotation` and `maxRotation` to the same value, which avoids the chart from having to automatically determine a value to use.
+通过设置`minRotation` 和 `maxRotation`设置刻度线旋转[指定的角度](./axes/cartesian/index.mdx#tick-configuration)，避免图表自动计算旋转角度。
 
-### Sampling
+### 采样
 
-Set the [`ticks.sampleSize`](./axes/cartesian/index.mdx#tick-configuration) option. This will determine how large your labels are by looking at only a subset of them in order to render axes more quickly. This works best if there is not a large variance in the size of your labels.
+设置[`ticks.sampleSize`](./axes/cartesian/index.mdx#tick-configuration)配置。这将通过只查看标签的子集来确定标签的大小，以便更快地渲染轴。如果标签的大小没有很大的差异，这是最好的方式。
 
-## Disable Animations
+## 禁用动画
 
-If your charts have long render times, it is a good idea to disable animations. Doing so will mean that the chart needs to only be rendered once during an update instead of multiple times. This will have the effect of reducing CPU usage and improving general page performance.
-Line charts use Path2D caching when animations are disabled.
 
-To disable animations
+如果图表的渲染时间较长，则最好禁用动画。这样图表更新是只会渲染一次，而不是多次。这将具有减少CPU使用率和提高总体页面性能的效果，禁用动画时，折线图使用Path2D缓存。
 
 ```javascript
 new Chart(ctx, {
@@ -49,9 +49,9 @@ new Chart(ctx, {
 });
 ```
 
-## Specify `min` and `max` for scales
+## 设置坐标轴的最大和最小值
 
-If you specify the `min` and `max`, the scale does not have to compute the range from the data.
+如果指定了坐标轴的最大和最小值，最大和最小值不会再去自动计算。
 
 ```javascript
 new Chart(ctx, {
@@ -74,18 +74,18 @@ new Chart(ctx, {
 });
 ```
 
-## Parallel rendering with web workers (Chrome only)
+## 利用web workers (Chrome)
 
-Chrome (in version 69) added the ability to [transfer rendering control of a canvas](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/transferControlToOffscreen) to a web worker. Web workers can use the [OffscreenCanvas API](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) to render from a web worker onto canvases in the DOM. Chart.js is a canvas-based library and supports rendering in a web worker - just pass an OffscreenCanvas into the Chart constructor instead of a Canvas element. Note that as of today, this API is only supported in Chrome.
+Chrome(在版本69中)增加了[transferControlToOffscreen](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/transferControlToOffscreen)让开发者可以使用[OffscreenCanvas API](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas)创建不操作界面Dom的进程，Chart.js支持在web worker中使用。
 
-By moving all Chart.js calculations onto a separate thread, the main thread can be freed up for other uses. Some tips and tricks when using Chart.js in a web worker:
-* Transferring data between threads can be expensive, so ensure that your config and data objects are as small as possible. Try generating them on the worker side if you can (workers can make HTTP requests!) or passing them to your worker as ArrayBuffers, which can be transferred quickly from one thread to another.
-* You can't transfer functions between threads, so if your config object includes functions you'll have to strip them out before transferring and then add them back later.
-* You can't access the DOM from worker threads, so Chart.js plugins that use the DOM (including any mouse interactions) will likely not work.
-* Ensure that you have a fallback if you support browsers other than the most modern Chrome browser.
-* Resizing the chart must be done manually. See an example in the worker code below.
+通过将所有复杂计算移到一个单独的线程上，主线程可以被释放用于其他用途。可尝试在web worker中使用下面方式提高性能：
+* 在线程之间传输数据是很昂贵的，所以要确保配置和数据对象尽可能小。如果可以的话，尝试在worker端生成它们(worker可以发出HTTP请求!)或者将它们作为ArrayBuffers传递给worker，这样可以快速地从一个线程传输到另一个线程。
+* 你不能在线程之间传输函数，所以如果你的配置对象包含函数，你必须在传输之前删除它们，然后再把它们添加回去。
+* 您不能从工作线程访问DOM，因此使用DOM的BKCharts插件(包括任何鼠标交互)可能无法工作。
+* 如果你支持的浏览器不是最现代的Chrome浏览器，请确保你有一个后备方案。
+* 调整图表的大小必须手动完成。参见下面工作代码中的示例。
 
-Example main thread code:
+主线程代码：
 
 ```javascript
 const config = {};
@@ -96,7 +96,7 @@ const worker = new Worker('worker.js');
 worker.postMessage({canvas: offscreenCanvas, config}, [offscreenCanvas]);
 ```
 
-Example worker code, in `worker.js`:
+web worker代码 `worker.js`:
 
 ```javascript
 onmessage = function(event) {
@@ -110,14 +110,13 @@ onmessage = function(event) {
 };
 ```
 
-## Line Charts
+## 折线图
 
-### Disable Bezier Curves
+### 禁用贝塞尔曲线
 
-If you are drawing lines on your chart, disabling bezier curves will improve render times since drawing a straight line is more performant than a bezier curve.
+贝塞尔曲线绘制比普通直接更消耗性能，可通过禁用它提升渲染速度。
 
-To disable bezier curves for an entire chart:
-
+禁用当前图表的贝塞尔曲线：
 ```javascript
 new Chart(ctx, {
     type: 'line',
@@ -132,9 +131,9 @@ new Chart(ctx, {
 });
 ```
 
-### Automatic data decimation during draw
+### 数据采样
 
-Line element will automatically decimate data, when the following conditions are met: `tension` is `0`, `stepped` is `false` (default) and `borderDash` is `[]` (default). This improves rendering speed by skipping drawing of invisible line segments.
+当`tension` 为 `0`, `stepped` 为 `false`（默认值） 并且 `borderDash` 为 `[]` （默认值）时会自动进行数据采样，通过不绘制不可见的线段提升渲染性能。
 
 ```javascript
 new Chart(ctx, {
@@ -153,11 +152,9 @@ new Chart(ctx, {
 });
 ```
 
-### Enable spanGaps
+### 禁用spanGaps
 
-If you have a lot of data points, it can be more performant to enable `spanGaps`. This disables segmentation of the line, which can be an unneeded step.
-
-To enable `spanGaps`:
+如果数据点很多，启用`spanGaps`属性可以禁用线段分隔：
 
 ```javascript
 new Chart(ctx, {
@@ -173,9 +170,9 @@ new Chart(ctx, {
 });
 ```
 
-### Disable Line Drawing
+### 禁用线绘制
 
-If you have a lot of data points, it can be more performant to disable rendering of the line for a dataset and only draw points. Doing this means that there is less to draw on the canvas which will improve render performance.
+如果数据点过多，可以禁用线的绘制：
 
 To disable lines:
 
@@ -193,11 +190,9 @@ new Chart(ctx, {
 });
 ```
 
-### Disable Point Drawing
+### 禁用点绘制
 
-If you have a lot of data points, it can be more performant to disable rendering of the points for a dataset and only draw line. Doing this means that there is less to draw on the canvas which will improve render performance.
-
-To disable point drawing:
+相反，可以禁用点的绘制，只绘制线来提升性能：
 
 ```javascript
 new Chart(ctx, {
@@ -222,7 +217,7 @@ new Chart(ctx, {
 });
 ```
 
-## When transpiling with Babel, consider using `loose` mode
+## 使用Babel时，建议设置为`loose`模式
 
-Babel 7.9 changed the way classes are constructed. It is slow, unless used with `loose` mode.
-[More information](https://github.com/babel/babel/issues/11356)
+Babel 7.9更改了类的构造方式。使用非`loose`模式可能会很慢，[查看](https://github.com/babel/babel/issues/11356)。
+
