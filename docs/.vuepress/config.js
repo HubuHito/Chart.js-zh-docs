@@ -57,6 +57,9 @@ module.exports = {
   },
   // configureWebpack: (config, isServer) => {
   //   return {
+  //     externals: {
+  //         moment: 'moment'
+  //     },
   //     module: {
   //       rules: [
   //         {

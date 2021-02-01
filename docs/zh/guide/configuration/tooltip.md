@@ -10,38 +10,38 @@ title: Tooltip
 | ---- | ---- | ------- | -----------
 | `enabled` | `boolean` | `true` | 是否启用
 | `custom` | `function` | `null` | [自定义tooltip](#自定义tooltip)
-| `mode` | `string` | | Tooltip 显示模式[查看](../general/interactions/modes.md).
+| `mode` | `string` | | Tooltip 显示模式[查看](../general/interactions/modes.md)
 | `intersect` | `boolean` | | 为 `true` 表示只有鼠标悬停在数据项时才生效
-| `position` | `string` | `'average'` | The mode for positioning the tooltip. [more...](#position-modes)
-| `callbacks` | `object` | | See the [callbacks section](#tooltip-callbacks).
-| `itemSort` | `function` | | Sort tooltip items. [more...](#sort-callback)
-| `filter` | `function` | | Filter tooltip items. [more...](#filter-callback)
-| `backgroundColor` | [`Color`](../general/colors.md) | `'rgba(0, 0, 0, 0.8)'` | Background color of the tooltip.
-| `titleColor` | [`Color`](../general/colors.md) | `'#fff'` | Color of title text.
-| `titleFont` | `Font` | `{style: 'bold'}` | See [Fonts](../general/fonts.md).
-| `titleAlign` | `string` | `'left'` | Horizontal alignment of the title text lines. [more...](#alignment)
-| `titleSpacing` | `number` | `2` | Spacing to add to top and bottom of each title line.
-| `titleMarginBottom` | `number` | `6` | Margin to add on bottom of title section.
-| `bodyColor` | [`Color`](../general/colors.md) | `'#fff'` | Color of body text.
-| `bodyFont` | `Font` | `{}` | See [Fonts](../general/fonts.md).
-| `bodyAlign` | `string` | `'left'` | Horizontal alignment of the body text lines. [more...](#alignment)
-| `bodySpacing` | `number` | `2` | Spacing to add to top and bottom of each tooltip item.
-| `footerColor` | [`Color`](../general/colors.md) | `'#fff'` | Color of footer text.
-| `footerFont` | `Font` | `{style: 'bold'}` | See [Fonts](../general/fonts.md).
-| `footerAlign` | `string` | `'left'` | Horizontal alignment of the footer text lines. [more...](#alignment)
-| `footerSpacing` | `number` | `2` | Spacing to add to top and bottom of each footer line.
+| `position` | `string` | `'average'` | The mode for positioning the tooltip. [查看](#position-modes)
+| `callbacks` | `object` | | Tooltip[回调函数](#tooltip-callbacks)
+| `itemSort` | `function` | | 排序 [查看](#排序回调)
+| `filter` | `function` | | 过滤 [查看](#过滤回调)
+| `backgroundColor` | [颜色](../general/colors.md) | `'rgba(0, 0, 0, 0.8)'` | 背景色
+| `titleColor` | [颜色](../general/colors.md) | `'#fff'` | 标题颜色
+| `titleFont` | `Font` | `{style: 'bold'}` | [字体](../general/fonts.md)
+| `titleAlign` | `string` | `'left'` | 标题水平对齐方式 [查看](#对齐)
+| `titleSpacing` | `number` | `2` | 每项的上下边距
+| `titleMarginBottom` | `number` | `6` | 下边距
+| `bodyColor` | [颜色](../general/colors.md) | `'#fff'` | 标题对应的内容颜色
+| `bodyFont` | `Font` | `{}` | [字体](../general/fonts.md)
+| `bodyAlign` | `string` | `'left'` | 内容水平方向对齐方式 [查看](#alignment)
+| `bodySpacing` | `number` | `2` | 每项的上下边距
+| `footerColor` | [颜色](../general/colors.md) | `'#fff'` | 底部颜色
+| `footerFont` | `Font` | `{style: 'bold'}` | [字体](../general/fonts.md)
+| `footerAlign` | `string` | `'left'` | 底部对齐方式 [查看](#alignment)
+| `footerSpacing` | `number` | `2` | 底部上下边距
 | `footerMarginTop` | `number` | `6` | Margin to add before drawing the footer.
 | `xPadding` | `number` | `6` | Padding to add on left and right of tooltip.
 | `yPadding` | `number` | `6` | Padding to add on top and bottom of tooltip.
 | `caretPadding` | `number` | `2` | Extra distance to move the end of the tooltip arrow away from the tooltip point.
 | `caretSize` | `number` | `5` | Size, in px, of the tooltip arrow.
 | `cornerRadius` | `number` | `6` | Radius of tooltip corner curves.
-| `multiKeyBackground` | [`Color`](../general/colors.md) | `'#fff'` | Color to draw behind the colored boxes when multiple items are in the tooltip.
+| `multiKeyBackground` | [颜色](../general/colors.md) | `'#fff'` | Color to draw behind the colored boxes when multiple items are in the tooltip.
 | `displayColors` | `boolean` | `true` | If true, color boxes are shown in the tooltip.
 | `boxWidth` | `number` | `bodyFont.size` | Width of the color box if displayColors is true.
 | `boxHeight` | `number` | `bodyFont.size` | Height of the color box if displayColors is true.
 | `usePointStyle` | `boolean` | `false` | Use the corresponding point style (from dataset options) instead of color boxes, ex: star, triangle etc. (size is based on the minimum value between boxWidth and boxHeight).
-| `borderColor` | [`Color`](../general/colors.md) | `'rgba(0, 0, 0, 0)'` | Color of the border.
+| `borderColor` | [颜色](../general/colors.md) | `'rgba(0, 0, 0, 0)'` | Color of the border.
 | `borderWidth` | `number` | `0` | Size of the border.
 | `rtl` | `boolean` | | `true` for rendering the tooltip from right to left.
 | `textDirection` | `string` | canvas' default | This will force the text direction `'rtl' or 'ltr` on the canvas for rendering the tooltips, regardless of the css specified on the canvas
@@ -99,7 +99,7 @@ Allows sorting of [tooltip items](#tooltip-item-context). Must implement at mini
 
 Allows filtering of [tooltip items](#tooltip-item-context). Must implement at minimum a function that can be passed to [Array.prototype.filter](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/filter). This function can also accept a fourth parameter that is the data object passed to the chart.
 
-## Tooltip Callbacks
+## 回调函数
 
 The tooltip label configuration is nested below the tooltip configuration using the `callbacks` key. The tooltip has the following callbacks for providing text. For all functions, `this` will be the tooltip object created from the `Tooltip` constructor.
 
@@ -112,10 +112,10 @@ All functions are called with the same arguments: a [tooltip item context](#tool
 | `afterTitle` | `TooltipItem[], object` | Returns text to render after the title.
 | `beforeBody` | `TooltipItem[], object` | Returns text to render before the body section.
 | `beforeLabel` | `TooltipItem, object` | Returns text to render before an individual label. This will be called for each item in the tooltip.
-| `label` | `TooltipItem, object` | Returns text to render for an individual item in the tooltip. [more...](#label-callback)
-| `labelColor` | `TooltipItem, Chart` | Returns the colors to render for the tooltip item. [more...](#label-color-callback)
+| `label` | `TooltipItem, object` | Returns text to render for an individual item in the tooltip. [查看](#label-callback)
+| `labelColor` | `TooltipItem, Chart` | Returns the colors to render for the tooltip item. [查看](#label-color-callback)
 | `labelTextColor` | `TooltipItem, Chart` | Returns the colors for the text of the label for the tooltip item.
-| `labelPointStyle` | `TooltipItem, Chart` | Returns the point style to use instead of color boxes if usePointStyle is true (object with values `pointStyle` and `rotation`). Default implementation uses the point style from the dataset points. [more...](#label-point-style-callback)
+| `labelPointStyle` | `TooltipItem, Chart` | Returns the point style to use instead of color boxes if usePointStyle is true (object with values `pointStyle` and `rotation`). Default implementation uses the point style from the dataset points. [查看](#label-point-style-callback)
 | `afterLabel` | `TooltipItem, object` | Returns text to render after an individual label.
 | `afterBody` | `TooltipItem[], object` | Returns text to render after the body section.
 | `beforeFooter` | `TooltipItem[], object` | Returns text to render before the footer section.

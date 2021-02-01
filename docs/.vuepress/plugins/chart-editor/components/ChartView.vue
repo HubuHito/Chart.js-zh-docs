@@ -6,6 +6,7 @@
 
 <script>
 import Chart from 'chart.js';
+import 'chartjs-adapter-moment';
 
 export default {
 	props: {
@@ -13,8 +14,8 @@ export default {
 			type: Object,
 			default: null,
 		},
-	},
-
+  },
+  
 	watch: {
 		config() {
 			this.update();

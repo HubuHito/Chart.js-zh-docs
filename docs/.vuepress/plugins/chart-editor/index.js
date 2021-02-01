@@ -31,9 +31,9 @@ module.exports = ({ defaults }) => {
 		],
 		chainWebpack: (config) => {
 			config.merge({
-				externals: {
-					moment: 'moment',
-				},
+				// externals: {
+				// 	moment: 'moment',
+				// },
 				resolve: {
 					alias: {
 						// Don't use the Chart.js ESM build since it's not yet
