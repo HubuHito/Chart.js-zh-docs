@@ -21,7 +21,7 @@ module.exports = {
         ]
       },
       {
-        title: '通用配置',
+        title: '基本配置',
         collapsable: false,
         children: [
           'general/data-structures',
@@ -42,6 +42,19 @@ module.exports = {
           'general/fonts',
           'general/performance',
           'general/locale'
+        ]
+      },
+      {
+        title: '通用配置',
+        collapsable: false,
+        children: [
+            'configuration/',
+            'configuration/animations',
+            'configuration/layout',
+            'configuration/legend',
+            'configuration/title',
+            'configuration/tooltip',
+            'configuration/elements'
         ]
       }
     ]

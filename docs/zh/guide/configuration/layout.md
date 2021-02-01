@@ -1,17 +1,18 @@
 ---
-title: Layout
+title: 布局
 ---
 
-The layout configuration is passed into the `options.layout` namespace. The global options for the chart layout is defined in `Chart.defaults.layout`.
+可通过`options.layout`配置图表布局，也可通过`Chart.defaults.layout`配置全局的。
 
-| Name | Type | Default | [Scriptable](../general/options.md#scriptable-options) | Description
+| 名称 | 类型 | 默认值 | [函数选项](../general/options.md#函数选项) | 描述
 | ---- | ---- | ------- | :----: | -----------
-| `padding` | `number`\|`object` | `0` | Yes | The padding to add inside the chart. [more...](#padding)
+| `padding` | `number`\|`object` | `0` | Yes | 图表内边距 [查看](#内边距)
 
-## Padding
-If this value is a number, it is applied to all sides of the chart (left, top, right, bottom). If this value is an object, the `left` property defines the left padding. Similarly the `right`, `top` and `bottom` properties can also be specified.
+## 内边距
 
-Lets say you wanted to add 50px of padding to the left side of the chart canvas, you would do:
+数值类型表示（左，上，右，下）边距都一样，对象类型可设置每个方向的具体值。
+
+如给图表添加50px的左边距：
 
 ```javascript
 let chart = new Chart(ctx, {

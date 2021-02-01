@@ -1,70 +1,123 @@
 ---
-title: Title
+title: 标题
 ---
 
-The chart title defines text to draw at the top of the chart.
+图表顶部标题配置
 
-## Title Configuration
+## 标题配置
 
-The title configuration is passed into the `options.plugins.title` namespace. The global options for the chart title is defined in `Chart.defaults.plugins.title`.
+可通过`options.plugins.title`配置图表标题，也可通过`Chart.defaults.plugins.title`配置全局的。
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `align` | `string` | `'center'` | Alignment of the title. [more...](#align)
-| `color` | [`Color`](../general/colors.md) | `Chart.defaults.color` | Color of text.
-| `display` | `boolean` | `false` | Is the title shown?
-| `position` | `string` | `'top'` | Position of title. [more...](#position)
-| `font` | `Font` | `{style: 'bold'}` | See [Fonts](../general/fonts.md)
-| `padding` | `number`\|`{top: number, bottom: number}` | `10` | Adds padding above and below the title text if a single number is specified. It is also possible to change top and bottom padding separately.
-| `text` | `string`\|`string[]` | `''` | Title text to display. If specified as an array, text is rendered on multiple lines.
+| `align` | `string` | `'center'` | 对齐方式 [对齐](#对齐)
+| `color` | [颜色](../general/colors.md) | `Chart.defaults.color` | 颜色
+| `display` | `boolean` | `false` | 是否显示
+| `position` | `string` | `'top'` | 位置 [位置](#位置)
+| `font` | `Font` | `{style: 'bold'}` | [字体](../general/fonts.md)
+| `padding` | `number`\|`{top: number, bottom: number}` | `10` | 内边距
+| `text` | `string`\|`string[]` | `''` | 标题文本，数组类型表示多行文本
 
-### Position
+### 位置
 
-Possible title position values are:
+标题位置：
 
 * `'top'`
 * `'left'`
 * `'bottom'`
 * `'right'`
 
-## Align
+## 对齐
 
-Alignment of the title. Options are:
+对齐方式：
 
 * `'start'`
 * `'center'`
 * `'end'`
 
-## Example Usage
+## 例子
 
-The example below would enable a title of 'Custom Chart Title' on the chart that is created.
+创建一个带有‘自定义图表标题’的图表：
 
-```javascript
-var chart = new Chart(ctx, {
+```js chart-editor
+/*<block:数据>*/
+let seed = 10
+const rand = (min, max) => {
+  min = min === undefined ? 0 : min
+  max = max === undefined ? 1 : max
+  seed = (seed * 9301 + 49297) % 233280
+  return min + (seed / 233280) * (max - min)
+}
+const data = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [{
+      label: '数据集1',
+      borderColor: 'red',
+      data: [
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100))
+      ]
+    }]
+}
+/*</block:数据>*/
+
+const config =/*<block:配置>*/ {
     type: 'line',
     data: data,
     options: {
         plugins: {
             title: {
                 display: true,
-                text: 'Custom Chart Title'
+                text: '自定义图表标题'
             }
         }
     }
-});
+}/*</block:配置>*/
+module.exports = {
+  config: config
+}
 ```
 
-This example shows how to specify separate top and bottom title text padding:
+设置标题的内边距：
 
-```javascript
-var chart = new Chart(ctx, {
+```js chart-editor
+/*<block:数据>*/
+let seed = 10
+const rand = (min, max) => {
+  min = min === undefined ? 0 : min
+  max = max === undefined ? 1 : max
+  seed = (seed * 9301 + 49297) % 233280
+  return min + (seed / 233280) * (max - min)
+}
+const data = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [{
+      label: '数据集1',
+      borderColor: 'red',
+      data: [
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100)),
+        Math.round(rand(-100, 100))
+      ]
+    }]
+}
+/*</block:数据>*/
+
+const config =/*<block:配置>*/ {
     type: 'line',
     data: data,
     options: {
         plugins: {
             title: {
                 display: true,
-                text: 'Custom Chart Title',
+                text: '自定义图表标题',
                 padding: {
                     top: 10,
                     bottom: 30
@@ -72,5 +125,8 @@ var chart = new Chart(ctx, {
             }
         }
     }
-});
+}/*</block:配置>*/
+module.exports = {
+  config: config
+}
 ```

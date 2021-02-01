@@ -2,16 +2,16 @@
 title: Tooltip
 ---
 
-## Tooltip Configuration
+## Tooltip配置
 
-The tooltip configuration is passed into the `options.plugins.tooltip` namespace. The global options for the chart tooltips is defined in `Chart.defaults.plugins.tooltip`.
+可通过`options.plugins.tooltip`配置图表悬浮提示，也可通过`Chart.defaults.plugins.tooltip`配置全局的。
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `enabled` | `boolean` | `true` | Are on-canvas tooltips enabled?
-| `custom` | `function` | `null` | See [custom tooltip](#external-custom-tooltips) section.
-| `mode` | `string` | | Sets which elements appear in the tooltip. [more...](../general/interactions/modes.md#interaction-modes).
-| `intersect` | `boolean` | | If true, the tooltip mode applies only when the mouse position intersects with an element. If false, the mode will be applied at all times.
+| `enabled` | `boolean` | `true` | 是否启用
+| `custom` | `function` | `null` | [自定义tooltip](#自定义tooltip)
+| `mode` | `string` | | Tooltip 显示模式[查看](../general/interactions/modes.md).
+| `intersect` | `boolean` | | 为 `true` 表示只有鼠标悬停在数据项时才生效
 | `position` | `string` | `'average'` | The mode for positioning the tooltip. [more...](#position-modes)
 | `callbacks` | `object` | | See the [callbacks section](#tooltip-callbacks).
 | `itemSort` | `function` | | Sort tooltip items. [more...](#sort-callback)

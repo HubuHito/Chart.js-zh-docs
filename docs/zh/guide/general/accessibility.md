@@ -1,5 +1,5 @@
 ---
-title: Accessibility
+title: 辅助功能
 ---
 
 Chart.js 使用 `canvas` 元素绘制的，绘制元素不像Dom一样可以被被选中。所有浏览器都支持`canvas`，但是`canvas`内部的元素内容是无法渲染的。
