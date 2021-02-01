@@ -1,6 +1,117 @@
 # 时间轴
 ```js chart-editor
 /* <block:配置:0> */
+var date = moment('Jan 01 1990', 'MMM DD YYYY');
+var data = [];
+for (var i = 0; i < 60; i++) {
+	data.push({x: date.valueOf(), y: i});
+	date = date.clone().add(1, 'month');
+}
+
+module.exports = {
+	threshold: 0.05,
+	config: {
+		type: 'line',
+		data: {
+			datasets: [{
+				xAxisID: 'x',
+				data: data,
+				fill: false
+			}],
+		},
+		options: {
+			scales: {
+				x: {
+					type: 'time',
+					ticks: {
+						major: {
+							enabled: true
+						},
+						source: 'data',
+						autoSkip: true,
+						maxRotation: 0
+					}
+				},
+				y: {
+					display: false
+				}
+			}
+		}
+	},
+	options: {
+		spriteText: true
+	}
+};
+
+/* </block:配置> */
+```
+
+
+```js chart-editor
+/* <block:配置:0> */
+var date = moment('May 24 2020', 'MMM DD YYYY');
+
+module.exports = {
+	threshold: 0.05,
+	config: {
+		type: 'bar',
+		data: {
+			datasets: [{
+				backgroundColor: 'rgba(255, 0, 0, 0.5)',
+				data: [
+					{
+						x: date.clone().add(-2, 'day'),
+						y: 20,
+					},
+					{
+						x: date.clone().add(-1, 'day'),
+						y: 30,
+					},
+					{
+						x: date,
+						y: 40,
+					},
+					{
+						x: date.clone().add(1, 'day'),
+						y: 50,
+					},
+					{
+						x: date.clone().add(7, 'day'),
+						y: 10,
+					}
+				]
+			}]
+		},
+		options: {
+			scales: {
+				x: {
+					display: false,
+					type: 'time',
+					distribution: 'linear',
+					ticks: {
+						source: 'auto'
+					},
+					time: {
+						unit: 'day'
+					}
+				},
+				y: {
+					display: false
+				}
+			}
+		}
+	},
+	options: {
+		spriteText: true
+	}
+};
+
+/* </block:配置> */
+```
+
+
+```js chart-editor
+/* <block:配置:0> */
 const config = {
     'type': 'line',
     'data': {
@@ -40,6 +151,168 @@ const config = {
 module.exports = {
 	config: config
 }
+/* </block:配置> */
+```
+
+
+```js chart-editor
+/* <block:配置:0> */
+function newDateFromRef(days) {
+	return moment('01/01/2015 12:00', 'DD/MM/YYYY HH:mm').add(days, 'd').toDate();
+}
+
+module.exports = {
+	threshold: 0.01,
+	config: {
+		type: 'line',
+		data: {
+			datasets: [{
+				data: [{
+					t: newDateFromRef(0),
+					y: 1
+				}, {
+					t: newDateFromRef(1),
+					y: 10
+				}, {
+					t: newDateFromRef(2),
+					y: 0
+				}, {
+					t: newDateFromRef(4),
+					y: 5
+				}, {
+					t: newDateFromRef(6),
+					y: 77
+				}, {
+					t: newDateFromRef(7),
+					y: 9
+				}, {
+					t: newDateFromRef(9),
+					y: 5
+				}],
+				fill: false,
+				parsing: {
+					xAxisKey: 't'
+				}
+			}],
+		},
+		options: {
+			scales: {
+				x: {
+					type: 'time',
+					position: 'bottom',
+					ticks: {
+						maxRotation: 0
+					}
+				},
+				y: {
+					display: false
+				}
+			}
+		}
+	},
+	options: {
+		spriteText: true,
+		canvas: {width: 800, height: 200}
+	}
+};
+
+/* </block:配置> */
+```
+
+
+```js chart-editor
+/* <block:配置:0> */
+function newDateFromRef(days) {
+	return moment('01/01/2015 12:00', 'DD/MM/YYYY HH:mm').add(days, 'd').toDate();
+}
+
+module.exports = {
+	threshold: 0.01,
+	config: {
+		type: 'line',
+		data: {
+			datasets: [{
+				data: [{
+					x: newDateFromRef(0),
+					y: 1
+				}, {
+					x: newDateFromRef(1),
+					y: 10
+				}, {
+					x: newDateFromRef(2),
+					y: 0
+				}, {
+					x: newDateFromRef(4),
+					y: 5
+				}, {
+					x: newDateFromRef(6),
+					y: 77
+				}, {
+					x: newDateFromRef(7),
+					y: 9
+				}, {
+					x: newDateFromRef(9),
+					y: 5
+				}],
+				fill: false
+			}],
+		},
+		options: {
+			scales: {
+				x: {
+					type: 'time',
+					position: 'bottom',
+					ticks: {
+						maxRotation: 0
+					}
+				},
+				y: {
+					display: false
+				}
+			}
+		}
+	},
+	options: {
+		spriteText: true,
+		canvas: {width: 800, height: 200}
+	}
+};
+
+/* </block:配置> */
+```
+
+
+```js chart-editor
+/* <block:配置:0> */
+function newDateFromRef(days) {
+	return moment('01/01/2015 12:00', 'DD/MM/YYYY HH:mm').add(days, 'd').toDate();
+}
+
+module.exports = {
+	threshold: 0.01,
+	config: {
+		type: 'line',
+		data: {
+			labels: [newDateFromRef(0), newDateFromRef(1), newDateFromRef(2), newDateFromRef(4), newDateFromRef(6), newDateFromRef(7), newDateFromRef(9)],
+			fill: false
+		},
+		options: {
+			scales: {
+				x: {
+					type: 'time',
+				},
+				y: {
+					display: false
+				}
+			}
+		}
+	},
+	options: {
+		spriteText: true,
+		canvas: {width: 1000, height: 200}
+	}
+};
+
 /* </block:配置> */
 ```
 

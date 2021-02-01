@@ -14,6 +14,7 @@
   "dependencies": {
     "chart.js": "^3.0.0-beta.9",
     "chartjs-adapter-moment": "^0.1.2",
+    "expose-loader": "^1.0.3",
     "moment": "^2.29.1"
   },
   "devDependencies": {

@@ -56,19 +56,28 @@ module.exports = {
           '/zh/': require('./locales/zh.js')
       }
   },
-  // configureWebpack: (config, isServer) => {
-  //   return {
-  //     externals: {
-  //         moment: 'moment'
-  //     },
-  //     module: {
-  //       rules: [
-  //         {
-  //           test: /.mdx?$/,
-  //           use: ['babel-loader', '@mdx-js/vue-loader']
-  //         }
-  //       ]
-  //     }
-  //   }
-  // }
+  configureWebpack: (config, isServer) => {
+    return {
+      module: {
+        rules: [{
+          test: require.resolve('moment'),
+          loader: 'expose-loader',
+          options: {
+            exposes: ['moment']
+          }
+        }]
+      },
+      // externals: {
+      //     moment: 'moment'
+      // },
+      // module: {
+      //   rules: [
+      //     {
+      //       test: /.mdx?$/,
+      //       use: ['babel-loader', '@mdx-js/vue-loader']
+      //     }
+      //   ]
+      // }
+    }
+  }
 }

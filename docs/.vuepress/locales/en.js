@@ -1,17 +1,12 @@
 module.exports = {
-  label: '简体中文',
-  selectText: '选择语言',
-  ariaLabel: '选择语言',
-  editLinkText: '在 GitHub 上编辑此页',
-  lastUpdated: '上次更新',
+  label: 'English',
+  selectText: 'Languages',
+  ariaLabel: 'Select language',
+  editLinkText: 'Edit this page',
+  lastUpdated: 'Last Updated',
   nav: [
-      { text: '首页', link: '/zh/' },
-      { text: '指南', link: '/zh/getting-started/' }
+      { text: 'Home', link: '/en/' }
   ],
   sidebar: {
-    '/zh/getting-started/': [
-      '',
-      'installation'
-    ]
   }
 }
