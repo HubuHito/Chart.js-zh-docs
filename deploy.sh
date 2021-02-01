@@ -20,6 +20,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:HubuHito/HubuHito.github.io.git master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:HubuHito/Chart.js-zh-docs.git main:gh-pages
+git push -f git@github.com:HubuHito/Chart.js-zh-docs.git master:gh-pages
 
 cd -
