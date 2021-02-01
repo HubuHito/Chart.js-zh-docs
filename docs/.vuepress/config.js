@@ -1,6 +1,7 @@
 module.exports = {
   title: 'Chart.js-zh-docs',
   description: 'Chartjs中文文档',
+  dest: 'dist',
   base: '/Chart.js-zh-docs/',
   head: [
       ['link', { rel: 'icon', href: `/favicon.png` }],
