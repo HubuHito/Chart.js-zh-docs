@@ -76,18 +76,18 @@ The bar chart allows a number of properties to be specified for each dataset.
 These are used to set display properties for a specific dataset. For example,
 the color of the bars is generally set this way.
 
-| Name | Type | [Scriptable](../general/options.md#scriptable-options) | [Indexable](../general/options.md#indexable-options) | Default
+| Name | Type | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
 | ---- | ---- | :----: | :----: | ----
-| [`backgroundColor`](#styling) | [`Color`](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
+| [`backgroundColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
 | [`base`](#general) | `number` | Yes | Yes |
-| [`borderColor`](#styling) | [`Color`](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
+| [`borderColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
 | [`borderSkipped`](#borderskipped) | `string` | Yes | Yes | `'start'`
 | [`borderWidth`](#borderwidth) | `number`\|`object` | Yes | Yes | `0`
 | [`borderRadius`](#borderradius) | `number`\|`object` | Yes | Yes | `0`
 | [`clip`](#general) | `number`\|`object` | - | - | `undefined`
 | [`data`](#data-structure) | `object[]` | - | - | **required**
-| [`hoverBackgroundColor`](#interactions) | [`Color`](../general/colors.md) | Yes | Yes | `undefined`
-| [`hoverBorderColor`](#interactions) | [`Color`](../general/colors.md) | Yes | Yes | `undefined`
+| [`hoverBackgroundColor`](#interactions) | [颜色](../general/colors.md) | Yes | Yes | `undefined`
+| [`hoverBorderColor`](#interactions) | [颜色](../general/colors.md) | Yes | Yes | `undefined`
 | [`hoverBorderWidth`](#interactions) | `number` | Yes | Yes | `1`
 | [`hoverBorderRadius`](#interactions) | `number` | Yes | Yes | `0`
 | [`indexAxis`](#general) | `string` | - | - | `'x'`
@@ -166,7 +166,7 @@ All these values, if `undefined`, fallback to the associated [`elements.bar.*`](
 
 The bar chart accepts the following configuration from the associated dataset options:
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `barPercentage` | `number` | `0.9` | Percent (0-1) of the available width each bar should be within the category width. 1.0 will take the whole category width and put the bars right next to each other. [more...](#barpercentage-vs-categorypercentage)
 | `categoryPercentage` | `number` | `0.8` | Percent (0-1) of the available width each category should be within the sample width. [more...](#barpercentage-vs-categorypercentage)
@@ -201,7 +201,7 @@ If not set (default), the base sample widths are calculated using the smallest i
 
 These are the customisation options specific to Bar charts. These options are merged with the global chart configuration options, and form the options of the chart.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `skipNull` | `boolean` | `undefined` | If `true`, null or undefined values will not be drawn
 
@@ -209,7 +209,7 @@ These are the customisation options specific to Bar charts. These options are me
 
 The bar chart sets unique default values for the following configuration from the associated `scale` options:
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `offset` | `boolean` | `true` | If true, extra space is added to both edges and the axis is scaled to fit into the chart area.
 | `gridLines.offsetGridLines` | `boolean` | `true` | If true, the bars for a particular data point fall between the grid lines. The grid line will move to the left by one half of the tick interval. If false, the grid line will go right down the middle of the bars. [more...](#offsetgridlines)

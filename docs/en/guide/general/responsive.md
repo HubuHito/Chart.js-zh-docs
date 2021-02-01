@@ -13,7 +13,7 @@ Chart.js provides a [few options](#configuration-options) to enable responsivene
 
 ## Configuration Options
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `responsive` | `boolean` | `true` | Resizes the chart canvas when its container does ([important note...](#important-note)).
 | `maintainAspectRatio` | `boolean` | `true` | Maintain the original canvas aspect ratio `(width / height)` when resizing.

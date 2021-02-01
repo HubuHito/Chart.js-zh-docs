@@ -1,38 +1,40 @@
 ---
-title: Elements
+title: 图形元素
 ---
 
-While chart types provide settings to configure the styling of each dataset, you sometimes want to style **all datasets the same way**. A common example would be to stroke all of the bars in a bar chart with the same colour but change the fill per dataset. Options can be configured for four different types of elements: **[arc](#arc-configuration)**, **[lines](#line-configuration)**, **[points](#point-configuration)**, and **[bars](#bar-configuration)**. When set, these options apply to all objects of that type unless specifically overridden by the configuration attached to a dataset.
+可以通过 **all datasets the same way** 配置所有数据集的图形元素（`elements`）样式，不用每个数据集单独配置，如一个常见的例子：柱形图描边一样，但是每个柱子的填充色不一样。有四种图形元素可供配置：**[arc](#arc-configuration)**， **[lines](#line-configuration)**， **[points](#point-configuration)** 和 **[bars](#bar-configuration)**，配置后，所有改类型的图形元素都会应用，除非被数据集里面的配置覆盖。
 
-## Global Configuration
+## 全局配置
 
-The element options can be specified per chart or globally. The global options for elements are defined in `Chart.defaults.elements`. For example, to set the border width of all bar charts globally you would do:
+图形元素`elements`支持全局配置和图表配置，全局配置通过`Chart.defaults.elements`设置，如下，设置所有柱形图的边框为1px：
+
+::: tip
+全局配置一般在`Chart.defaults`命名空间下，图表配置一般在`options`配置项下面，数据集`datasets`的配置可覆盖全局和图表的配置。
+:::
 
 ```javascript
 Chart.defaults.elements.bar.borderWidth = 2;
 ```
 
-## Point Configuration
+## 点配置
 
-Point elements are used to represent the points in a line, radar or bubble chart.
+点元素一般用来绘制折线图、雷达图或者气泡图中的点，点元素全局配置项为 `Chart.defaults.elements.point`。
 
-Global point options: `Chart.defaults.elements.point`.
-
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `radius` | `number` | `3` | Point radius.
-| [`pointStyle`](#point-styles) | `string`\|`Image` | `'circle'` | Point style.
-| `rotation` | `number` | `0` | Point rotation (in degrees).
-| `backgroundColor` | [`Color`](../general/colors.md) | `Chart.defaults.backgroundColor` | Point fill color.
-| `borderWidth` | `number` | `1` | Point stroke width.
-| `borderColor` | [`Color`](../general/colors.md) | `Chart.defaults.borderColor` | Point stroke color.
+| `radius` | `number` | `3` | 半径
+| [`pointStyle`](#点样式) | `string`\|`Image` | `'circle'` | 点样式
+| `rotation` | `number` | `0` | 旋转角度
+| `backgroundColor` | [颜色](../general/colors.md) | `Chart.defaults.backgroundColor` | 填充色
+| `borderWidth` | `number` | `1` | 描边
+| `borderColor` | [颜色](../general/colors.md) | `Chart.defaults.borderColor` | 描边颜色
 | `hitRadius` | `number` | `1` | Extra radius added to point radius for hit detection.
-| `hoverRadius` | `number` | `4` | Point radius when hovered.
-| `hoverBorderWidth` | `number` | `1` | Stroke width when hovered.
+| `hoverRadius` | `number` | `4` | 悬浮时点半径
+| `hoverBorderWidth` | `number` | `1` | 悬浮时描边
 
-### Point Styles
+### 点样式
 
-The following values are supported:
+可选值如下：
 
 - `'circle'`
 - `'cross'`
@@ -45,52 +47,46 @@ The following values are supported:
 - `'star'`
 - `'triangle'`
 
-If the value is an image, that image is drawn on the canvas using [drawImage](https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D/drawImage).
+如果值类型是图像，则会调用canvas[drawImage](https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D/drawImage)方法。
 
-## Line Configuration
+## 线配置
 
-Line elements are used to represent the line in a line chart.
+线元素表示绘制折线，全局线元素配置`Chart.defaults.elements.line`
 
-Global line options: `Chart.defaults.elements.line`.
-
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `tension` | `number` | `0` | Bézier curve tension (`0` for no Bézier curves).
-| `backgroundColor` | [`Color`](../general/colors.md) | `Chart.defaults.backgroundColor` | Line fill color.
-| `borderWidth` | `number` | `3` | Line stroke width.
-| `borderColor` | [`Color`](../general/colors.md) | `Chart.defaults.borderColor` | Line stroke color.
-| `borderCapStyle` | `string` | `'butt'` | Line cap style. See [MDN](https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D/lineCap).
-| `borderDash` | `number[]` | `[]` | Line dash. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash).
-| `borderDashOffset` | `number` | `0.0` | Line dash offset. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset).
-| `borderJoinStyle` | `string` | `'miter'` | Line join style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin).
-| `capBezierPoints` | `boolean` | `true` | `true` to keep Bézier control inside the chart, `false` for no restriction.
-| `cubicInterpolationMode` | `string` | `'default'` |  Interpolation mode to apply. [See more...](./charts/line.mdx/#cubicinterpolationmode)
-| `fill` | `boolean`\|`string` | `false` | How to fill the area under the line. See [area charts](../charts/area.md#filling-modes).
-| `stepped` | `boolean` | `false` | `true` to show the line as a stepped line (`tension` will be ignored).
+| `tension` | `number` | `0` | 张力 (`0` 表示不是贝塞尔曲线，即直线)
+| `backgroundColor` | [颜色](../general/colors.md) | `Chart.defaults.backgroundColor` | 填充色
+| `borderWidth` | `number` | `3` | 描边
+| `borderColor` | [颜色](../general/colors.md) | `Chart.defaults.borderColor` | 描边色
+| `borderCapStyle` | `string` | `'butt'` | 线帽样式，查看[MDN](https://developer.mozilla.org/en/docs/Web/API/CanvasRenderingContext2D/lineCap)
+| `borderDash` | `number[]` | `[]` | 虚线模式，查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash)
+| `borderDashOffset` | `number` | `0.0` | 虚线偏移量，查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset).
+| `borderJoinStyle` | `string` | `'miter'` | 连接方式，查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin)
+| `capBezierPoints` | `boolean` | `true` | `true`表示在图表内受贝塞尔曲线控制，`false`为没限制
+| `cubicInterpolationMode` | `string` | `'default'` |  插值模式，[查看](./charts/line.mdx/#cubicinterpolationmode)
+| `fill` | `boolean`\|`string` | `false` | 如何填充折线以下部分，查看[面积图](../charts/area.md#filling-modes)
+| `stepped` | `boolean` | `false` | `true` 表示显示阶梯线 (`tension` 属性会被忽略)
 
-## Bar Configuration
+## 条形配置
 
-Bar elements are used to represent the bars in a bar chart.
+条形元素用于绘制柱形图的条形，全局配置在`Chart.defaults.elements.bar`中设置。
 
-Global bar options: `Chart.defaults.elements.bar`.
-
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `backgroundColor` | [`Color`](../general/colors.md) | `Chart.defaults.backgroundColor` | Bar fill color.
-| `borderWidth` | `number` | `0` | Bar stroke width.
-| `borderColor` | [`Color`](../general/colors.md) | `Chart.defaults.borderColor` | Bar stroke color.
+| `backgroundColor` | [颜色](../general/colors.md) | `Chart.defaults.backgroundColor` | 填充色
+| `borderWidth` | `number` | `0` | 描边
+| `borderColor` | [颜色](../general/colors.md) | `Chart.defaults.borderColor` | 描边色
 | `borderSkipped` | `string` | `'start'` | Skipped (excluded) border: `'start'`, `'end'`, `'bottom'`, `'left'`, `'top'` or `'right'`.
 
-## Arc Configuration
+## 圆弧配置
 
-Arcs are used in the polar area, doughnut and pie charts.
+圆弧一般用于绘制南丁格尔玫瑰图、圆环图和饼图，全局配置在`Chart.defaults.elements.arc`中设置。
 
-Global arc options: `Chart.defaults.elements.arc`.
-
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `angle` - for polar only | `number` | `circumference / (arc count)` | Arc angle to cover.
-| `backgroundColor` | [`Color`](../general/colors.md) | `Chart.defaults.backgroundColor` | Arc fill color.
-| `borderAlign` | `string` | `'center'` | Arc stroke alignment.
-| `borderColor` | [`Color`](../general/colors.md) | `'#fff'` | Arc stroke color.
-| `borderWidth`| `number` | `2` | Arc stroke width.
+| `angle` - for polar only | `number` | `circumference / (arc count)` | 弧度
+| `backgroundColor` | [颜色](../general/colors.md) | `Chart.defaults.backgroundColor` | 填充色
+| `borderAlign` | `string` | `'center'` | 对齐方式
+| `borderColor` | [颜色](../general/colors.md) | `'#fff'` | 描边色
+| `borderWidth`| `number` | `2` | 描边

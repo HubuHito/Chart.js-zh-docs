@@ -1,72 +1,79 @@
 ---
-title: Configuration
+title: 图表配置
 ---
 
-The configuration is used to change how the chart behaves. There are properties to control styling, fonts, the legend, etc.
+图表行为配置，也可以配置样式、字体和图例等。
 
-## Global Configuration
+## 全局配置
 
-This concept was introduced in Chart.js 1.0 to keep configuration [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), and allow for changing options globally across chart types, avoiding the need to specify options for each instance, or the default for a particular chart type.
+Chart.js 1.0中引入了此概念，目的是保持配置不重复[DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)，并允许更改全局的图表默认配置，从而避免为每个图表实例指定配置，或为特定图表类型指定默认配置。
 
-Chart.js merges the options object passed to the chart with the global configuration using chart type defaults and scales defaults appropriately. This way you can be as specific as you would like in your individual chart configuration, while still changing the defaults for all chart types where applicable. The global general options are defined in `Chart.defaults`. The defaults for each chart type are discussed in the documentation for that chart type.
+Chart.js 会把全局配置项合并到不同图表上，并根据合并策略适当的修改默认值。更改全局配置也会使所有图表配置修改，这样你可以自定义自己的风格图表。可通过`Chart.defaults`设置全局配置，每种图表的默认值会在后面文档中说明。
 
-The following example would set the hover mode to 'nearest' for all charts where this was not overridden by the chart type defaults or the options passed to the constructor on creation.
+如：设置所有图表的默认悬浮模式为 'nearest'：
 
 ```javascript
 Chart.defaults.hover.mode = 'nearest';
 
-// Hover mode is set to nearest because it was not overridden here
+// 没有配置项设置悬浮模式，悬浮模式默认为 'nearest'
 var chartHoverModeNearest = new Chart(ctx, {
     type: 'line',
     data: data
 });
 
-// This chart would have the hover mode that was passed in
+// 配置中有覆盖全局模式的配置，悬浮模式为 'index'
 var chartDifferentHoverMode = new Chart(ctx, {
     type: 'line',
     data: data,
     options: {
         hover: {
-            // Overrides the global setting
+            // 覆盖全局配置
             mode: 'index'
         }
     }
 });
 ```
 
-## Dataset Configuration
+## 数据集配置
 
-Options may be configured directly on the dataset. The dataset options can be changed at 3 different levels and are evaluated with the following priority:
+数据集中也可配置图表相关配置项（与数据集相关的），并且优先级最高，它会覆盖图表配置或者全局的配置项，具体优先级如下：
 
-- per dataset: dataset.*
-- per chart: options.datasets[type].*
-- or globally: Chart.defaults.controllers[type].datasets.*
+- 数据集配置：dataset.*
+- 图表配置：options.datasets[type].*
+- 全局配置： Chart.defaults.controllers[type].datasets.*
 
-where type corresponds to the dataset type.
+上面 `type` 表示数据集类型（line、bar等）
 
-*Note:* dataset options take precedence over element options.
+::: tip
+数据集的配置项，优先于`options.elements`的配置
+:::
 
-The following example would set the `showLine` option to 'false' for all line datasets except for those overridden by options passed to the dataset on creation.
+如：设置所有折线相关的数据集默认隐藏`showLine: false`，然后通过每个数据集的配置覆盖全局配置：
 
-```javascript
-// Do not show lines for all datasets by default
-Chart.defaults.controllers.line.showLine = false;
+```js chart-editor
+//<block:配置>
+Chart.defaults.controllers.line.showLine = false; // 所有折线数据集默认不显示
 
-// This chart would show a line only for the third dataset
-var chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        datasets: [{
-            data: [0, 0],
-        }, {
-            data: [0, 1]
-        }, {
-            data: [1, 0],
-            showLine: true // overrides the `line` dataset default
-        }, {
-            type: 'scatter', // 'line' dataset default does not affect this dataset since it's a 'scatter'
-            data: [1, 1]
-        }]
-    }
-});
+// 只有第三个数据集会绘制直线，第四个数据集为点
+const config = {
+  type: 'line',
+  data: {
+      datasets: [{
+          data: [0, 0],
+      }, {
+          data: [0, 1]
+      }, {
+          data: [1, 0],
+          showLine: true // 覆盖showLine的值
+      }, {
+          type: 'scatter', // 折线数据集不会影响scatter数据集
+          data: [1, 1]
+      }]
+  }
+};
+//</block:配置>
+
+module.exports = {
+  config
+}
 ```

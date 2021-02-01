@@ -6,7 +6,7 @@ title: Tooltip
 
 The tooltip configuration is passed into the `options.plugins.tooltip` namespace. The global options for the chart tooltips is defined in `Chart.defaults.plugins.tooltip`.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `enabled` | `boolean` | `true` | Are on-canvas tooltips enabled?
 | `custom` | `function` | `null` | See [custom tooltip](#external-custom-tooltips) section.
@@ -16,17 +16,17 @@ The tooltip configuration is passed into the `options.plugins.tooltip` namespace
 | `callbacks` | `object` | | See the [callbacks section](#tooltip-callbacks).
 | `itemSort` | `function` | | Sort tooltip items. [more...](#sort-callback)
 | `filter` | `function` | | Filter tooltip items. [more...](#filter-callback)
-| `backgroundColor` | [`Color`](../general/colors.md) | `'rgba(0, 0, 0, 0.8)'` | Background color of the tooltip.
-| `titleColor` | [`Color`](../general/colors.md) | `'#fff'` | Color of title text.
+| `backgroundColor` | [颜色](../general/colors.md) | `'rgba(0, 0, 0, 0.8)'` | Background color of the tooltip.
+| `titleColor` | [颜色](../general/colors.md) | `'#fff'` | Color of title text.
 | `titleFont` | `Font` | `{style: 'bold'}` | See [Fonts](../general/fonts.md).
 | `titleAlign` | `string` | `'left'` | Horizontal alignment of the title text lines. [more...](#alignment)
 | `titleSpacing` | `number` | `2` | Spacing to add to top and bottom of each title line.
 | `titleMarginBottom` | `number` | `6` | Margin to add on bottom of title section.
-| `bodyColor` | [`Color`](../general/colors.md) | `'#fff'` | Color of body text.
+| `bodyColor` | [颜色](../general/colors.md) | `'#fff'` | Color of body text.
 | `bodyFont` | `Font` | `{}` | See [Fonts](../general/fonts.md).
 | `bodyAlign` | `string` | `'left'` | Horizontal alignment of the body text lines. [more...](#alignment)
 | `bodySpacing` | `number` | `2` | Spacing to add to top and bottom of each tooltip item.
-| `footerColor` | [`Color`](../general/colors.md) | `'#fff'` | Color of footer text.
+| `footerColor` | [颜色](../general/colors.md) | `'#fff'` | Color of footer text.
 | `footerFont` | `Font` | `{style: 'bold'}` | See [Fonts](../general/fonts.md).
 | `footerAlign` | `string` | `'left'` | Horizontal alignment of the footer text lines. [more...](#alignment)
 | `footerSpacing` | `number` | `2` | Spacing to add to top and bottom of each footer line.
@@ -36,12 +36,12 @@ The tooltip configuration is passed into the `options.plugins.tooltip` namespace
 | `caretPadding` | `number` | `2` | Extra distance to move the end of the tooltip arrow away from the tooltip point.
 | `caretSize` | `number` | `5` | Size, in px, of the tooltip arrow.
 | `cornerRadius` | `number` | `6` | Radius of tooltip corner curves.
-| `multiKeyBackground` | [`Color`](../general/colors.md) | `'#fff'` | Color to draw behind the colored boxes when multiple items are in the tooltip.
+| `multiKeyBackground` | [颜色](../general/colors.md) | `'#fff'` | Color to draw behind the colored boxes when multiple items are in the tooltip.
 | `displayColors` | `boolean` | `true` | If true, color boxes are shown in the tooltip.
 | `boxWidth` | `number` | `bodyFont.size` | Width of the color box if displayColors is true.
 | `boxHeight` | `number` | `bodyFont.size` | Height of the color box if displayColors is true.
 | `usePointStyle` | `boolean` | `false` | Use the corresponding point style (from dataset options) instead of color boxes, ex: star, triangle etc. (size is based on the minimum value between boxWidth and boxHeight).
-| `borderColor` | [`Color`](../general/colors.md) | `'rgba(0, 0, 0, 0)'` | Color of the border.
+| `borderColor` | [颜色](../general/colors.md) | `'rgba(0, 0, 0, 0)'` | Color of the border.
 | `borderWidth` | `number` | `0` | Size of the border.
 | `rtl` | `boolean` | | `true` for rendering the tooltip from right to left.
 | `textDirection` | `string` | canvas' default | This will force the text direction `'rtl' or 'ltr` on the canvas for rendering the tooltips, regardless of the css specified on the canvas

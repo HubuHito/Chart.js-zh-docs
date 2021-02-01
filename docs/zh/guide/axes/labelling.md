@@ -8,12 +8,12 @@ When creating a chart, you want to tell the viewer what data they are viewing. T
 
 The scale label configuration is nested under the scale configuration in the `scaleLabel` key. It defines options for the scale title. Note that this only applies to cartesian axes.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `display` | `boolean` | `false` | If true, display the axis title.
 | `align` | `string` | `'center'` | Alignment of the axis title. Possible options are `'start'`, `'center'` and `'end'`
 | `labelString` | `string` | `''` | The text for the title. (i.e. "# of People" or "Response Choices").
-| `color` | [`Color`](../general/colors.md) | `Chart.defaults.color` | Color of label.
+| `color` | [颜色](../general/colors.md) | `Chart.defaults.color` | Color of label.
 | `font` | `Font` | `Chart.defaults.font` | See [Fonts](../general/fonts.md)
 | `padding` | `number`\|`object` | `4` | Padding to apply around scale labels. Only `top` and `bottom` are implemented.
 

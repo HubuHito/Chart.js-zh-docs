@@ -57,6 +57,13 @@ module.exports = {
             'configuration/tooltip',
             'configuration/elements'
         ]
+      },
+      {
+        title: '图表类型',
+        collapsable: false,
+        children: [
+            'charts/line',
+        ]
       }
     ],
     '/zh/samples/': [{

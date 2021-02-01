@@ -96,17 +96,17 @@ function example() {
 
 The doughnut/pie chart allows a number of properties to be specified for each dataset. These are used to set display properties for a specific dataset. For example, the colours of the dataset's arcs are generally set this way.
 
-| Name | Type | [Scriptable](../general/options.md#scriptable-options) | [Indexable](../general/options.md#indexable-options) | Default
+| Name | Type | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
 | ---- | ---- | :----: | :----: | ----
-| [`backgroundColor`](#styling) | [`Color`](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
+| [`backgroundColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
 | [`borderAlign`](#border-alignment) | `string` | Yes | Yes | `'center'`
-| [`borderColor`](#styling) | [`Color`](../general/colors.md) | Yes | Yes | `'#fff'`
+| [`borderColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'#fff'`
 | [`borderWidth`](#styling) | `number` | Yes | Yes | `2`
 | [`circumference`](#general) | `number` | - | - | `undefined`
 | [`clip`](#general) | `number`\|`object` | - | - | `undefined`
 | [`data`](#data-structure) | `number[]` | - | - | **required**
-| [`hoverBackgroundColor`](#interations) | [`Color`](../general/colors.md) | Yes | Yes | `undefined`
-| [`hoverBorderColor`](#interactions) | [`Color`](../general/colors.md) | Yes | Yes | `undefined`
+| [`hoverBackgroundColor`](#interations) | [颜色](../general/colors.md) | Yes | Yes | `undefined`
+| [`hoverBorderColor`](#interactions) | [颜色](../general/colors.md) | Yes | Yes | `undefined`
 | [`hoverBorderWidth`](#interactions) | `number` | Yes | Yes | `undefined`
 | [`hoverOffset`](#interactions) | `number` | Yes | Yes | `0`
 | [`offset`](#styling) | `number` | Yes | Yes | `0`
@@ -161,7 +161,7 @@ All these values, if `undefined`, fallback to the associated [`elements.arc.*`](
 
 These are the customisation options specific to Pie & Doughnut charts. These options are merged with the global chart configuration options, and form the options of the chart.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `cutoutPercentage` | `number` | `50` - for doughnut, `0` - for pie | The percentage of the chart that is cut out of the middle.
 | `rotation` | `number` | 0 | Starting angle to draw arcs from.

@@ -1,63 +1,48 @@
 ---
-title: Line Chart
+title: 折线图
 ---
 
-A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or the comparison of two data sets.
-
-import { useEffect } from 'react';
-
-export const ExampleChart = () => {
-  useEffect(() => {
-    const cfg = {
-      type: 'line',
-      data: {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July'
-        ],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
-        }]
-      },
-      options: {
-      }
-    };
-    const chart = new Chart(document.getElementById('chartjs-0').getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas id="chartjs-0" className="chartjs"></canvas></div>;
-}
-
-<ExampleChart/>
+折线图是在一条线上绘制数据点的展现方式，通常用于显示数据趋势或两个数据集的比较。
 
 ## Example Usage
 
-```javascript
-var myLineChart = new Chart(ctx, {
-    type: 'line',
-    data: data,
-    options: options
-});
+```js chart-editor
+const config = /*<block:配置>*/{
+  type: 'line',
+  data: {
+    labels: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July'
+    ],
+    datasets: [{
+      label: 'My First Dataset',
+      data: [65, 59, 80, 81, 56, 55, 40],
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      tension: 0.1
+    }]
+  }
+}/*</block:配置>*/
+
+module.exports = {
+  config
+}
 ```
 
-## Dataset Properties
+## 数据集属性配置
 
-The line chart allows a number of properties to be specified for each dataset. These are used to set display properties for a specific dataset. For example, the colour of a line is generally set this way.
+可以给每个数据集设置特定的属性，折线图相关颜色的配置如下：
 
-| Name | Type | [Scriptable](../general/options.md#scriptable-options) | [Indexable](../general/options.md#indexable-options) | Default
+| 名称 | 类型 | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | 默认值
 | ---- | ---- | :----: | :----: | ----
-| [`backgroundColor`](#line-styling) | [`Color`](../general/colors.md) | Yes | - | `'rgba(0, 0, 0, 0.1)'`
+| [`backgroundColor`](#line-styling) | [颜色](../general/colors.md) | Yes | - | `'rgba(0, 0, 0, 0.1)'`
 | [`borderCapStyle`](#line-styling) | `string` | Yes | - | `'butt'`
-| [`borderColor`](#line-styling) | [`Color`](../general/colors.md) | Yes | - | `'rgba(0, 0, 0, 0.1)'`
+| [`borderColor`](#line-styling) | [颜色](../general/colors.md) | Yes | - | `'rgba(0, 0, 0, 0.1)'`
 | [`borderDash`](#line-styling) | `number[]` | Yes | - | `[]`
 | [`borderDashOffset`](#line-styling) | `number` | Yes | - | `0.0`
 | [`borderJoinStyle`](#line-styling) | `string` | Yes | - | `'miter'`
@@ -65,9 +50,9 @@ The line chart allows a number of properties to be specified for each dataset. T
 | [`clip`](#general) | `number`\|`object` | - | - | `undefined`
 | [`cubicInterpolationMode`](#cubicinterpolationmode) | `string` | Yes | - | `'default'`
 | [`fill`](#line-styling) | `boolean`\|`string` | Yes | - | `false`
-| [`hoverBackgroundColor`](#line-styling) | [`Color`](../general/colors.md) | Yes | - | `undefined`
+| [`hoverBackgroundColor`](#line-styling) | [颜色](../general/colors.md) | Yes | - | `undefined`
 | [`hoverBorderCapStyle`](#line-styling) | `string` | Yes | - | `undefined`
-| [`hoverBorderColor`](#line-styling) | [`Color`](../general/colors.md) | Yes | - | `undefined`
+| [`hoverBorderColor`](#line-styling) | [颜色](../general/colors.md) | Yes | - | `undefined`
 | [`hoverBorderDash`](#line-styling) | `number[]` | Yes | - | `undefined`
 | [`hoverBorderDashOffset`](#line-styling) | `number` | Yes | - | `undefined`
 | [`hoverBorderJoinStyle`](#line-styling) | `string` | Yes | - | `undefined`
@@ -93,9 +78,9 @@ The line chart allows a number of properties to be specified for each dataset. T
 | [`xAxisID`](#general) | `string` | - | - | first x axis
 | [`yAxisID`](#general) | `string` | - | - | first y axis
 
-### General
+### 基本配置
 
-| Name | Description
+| 名称 | 描述
 | ---- | ----
 | `clip` | How to clip relative to chartArea. Positive value allows overflow, negative value clips that many pixels inside chartArea. `0` = clip at chartArea. Clipping can also be configured per side: `clip: {left: 5, top: false, right: -2, bottom: 0}`
 | `indexAxis` | The base axis of the dataset. `'x'` for horizontal lines and `'y'` for vertical lines.
@@ -104,7 +89,7 @@ The line chart allows a number of properties to be specified for each dataset. T
 | `xAxisID` | The ID of the x-axis to plot this dataset on.
 | `yAxisID` | The ID of the y-axis to plot this dataset on.
 
-### Point Styling
+### 点样式
 
 The style of each point can be controlled with the following properties:
 
@@ -120,18 +105,18 @@ The style of each point can be controlled with the following properties:
 
 All these values, if `undefined`, fallback first to the dataset options then to the associated [`elements.point.*`](../configuration/elements.md#point-configuration) options.
 
-### Line Styling
+### 线样式
 
 The style of the line can be controlled with the following properties:
 
 | Name | Description
 | ---- | ----
 | `backgroundColor` | The line fill color.
-| `borderCapStyle` | Cap style of the line. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap).
+| `borderCapStyle` | Cap style of the line. 查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap).
 | `borderColor` | The line color.
-| `borderDash` | Length and spacing of dashes. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash).
-| `borderDashOffset` | Offset for line dashes. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset).
-| `borderJoinStyle` | Line joint style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin).
+| `borderDash` | Length and spacing of dashes. 查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash).
+| `borderDashOffset` | Offset for line dashes. 查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset).
+| `borderJoinStyle` | Line joint style. 查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin).
 | `borderWidth` | The line width (in pixels).
 | `fill` | How to fill the area under the line. See [area charts](area.md).
 | `tension` | Bezier curve tension of the line. Set to 0 to draw straightlines. This option is ignored if monotone cubic interpolation is used.
@@ -140,7 +125,7 @@ The style of the line can be controlled with the following properties:
 
 If the value is `undefined`, `showLine` and `spanGaps` fallback to the associated [chart configuration options](#configuration-options). The rest of the values fallback to the associated [`elements.line.*`](../configuration/elements.md#line-configuration) options.
 
-### Interactions
+### 交互
 
 The interaction with each point can be controlled with the following properties:
 
@@ -151,7 +136,7 @@ The interaction with each point can be controlled with the following properties:
 | `pointHoverBorderWidth` | Border width of point when hovered.
 | `pointHoverRadius` | The radius of the point when hovered.
 
-### cubicInterpolationMode
+### 插值模式
 
 The following interpolation modes are supported.
 
@@ -164,7 +149,7 @@ The `'monotone'` algorithm is more suited to `y = f(x)` datasets: it preserves m
 
 If left untouched (`undefined`), the global `options.elements.line.cubicInterpolationMode` property is used.
 
-### Stepped
+### 阶梯
 
 The following values are supported for `stepped`.
 
@@ -180,7 +165,7 @@ If the `stepped` value is set to anything other than false, `tension` will be ig
 
 The line chart defines the following configuration options. These options are merged with the global chart configuration options, `Chart.defaults`, to form the options passed to the chart.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `showLine` | `boolean` | `true` | If false, the lines between points are not drawn.
 | `spanGaps` | `boolean`\|`number` | `false` | If true, lines will be drawn between points with no or null data. If false, points with `NaN` data will create a break in the line. Can also be a number specifying the maximum gap length to span. The unit of the value depends on the scale used.

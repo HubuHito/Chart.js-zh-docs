@@ -4,7 +4,7 @@ title: Colors
 
 When supplying colors to Chart options, you can use a number of formats. You can specify the color as a string in hexadecimal, RGB, or HSL notations. If a color is needed, but not specified, Chart.js will use the global default color. There are 3 color options, stored at `Chart.defaults`, to set:
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `backgroundColor` | `Color` | `rgba(0, 0, 0, 0.1)` | Background color.
 | `borderColor` | `Color` | `rgba(0, 0, 0, 0.1)` | Border color.

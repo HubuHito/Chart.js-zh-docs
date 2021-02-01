@@ -8,7 +8,7 @@ The chart legend displays data about the datasets that are appearing on the char
 
 The legend configuration is passed into the `options.plugins.legend` namespace. The global options for the chart legend is defined in `Chart.defaults.plugins.legend`.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `display` | `boolean` | `true` | Is the legend shown?
 | `position` | `string` | `'top'` | Position of the legend. [more...](#position)
@@ -48,11 +48,11 @@ Defaults to `'center'` for unrecognized values.
 
 The legend label configuration is nested below the legend configuration using the `labels` key.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `boxWidth` | `number` | `40` | Width of coloured box.
 | `boxHeight` | `number` | `font.size` | Height of the coloured box.
-| `color` | [`Color`](../general/colors.md) | `Chart.defaults.color` | Color of label and the strikethrough.
+| `color` | [颜色](../general/colors.md) | `Chart.defaults.color` | Color of label and the strikethrough.
 | `font` | `Font` | `Chart.defaults.font` | See [Fonts](../general/fonts.md)
 | `padding` | `number` | `10` | Padding between rows of colored boxes.
 | `generateLabels` | `function` | | Generates legend items for each thing in the legend. Default implementation returns the text + styling for the color box. See [Legend Item](#legend-item-interface) for details.
@@ -65,9 +65,9 @@ The legend label configuration is nested below the legend configuration using th
 
 The legend title configuration is nested below the legend configuration using the `title` key.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
-| `color` | [`Color`](../general/colors.md) | `Chart.defaults.color` | Color of text.
+| `color` | [颜色](../general/colors.md) | `Chart.defaults.color` | Color of text.
 | `display` | `boolean` | `false` | Is the legend title displayed.
 | `font` | `Font` | `Chart.defaults.font` | See [Fonts](../general/fonts.md)
 | `padding` | `number`\|`object` | `0` | Padding around the title. If specified as a number, it applies evenly to all sides.

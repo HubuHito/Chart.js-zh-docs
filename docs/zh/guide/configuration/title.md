@@ -41,13 +41,13 @@ title: 标题
 
 ```js chart-editor
 /*<block:数据>*/
-let seed = 10
+let seed = 10;
 const rand = (min, max) => {
   min = min === undefined ? 0 : min
   max = max === undefined ? 1 : max
   seed = (seed * 9301 + 49297) % 233280
   return min + (seed / 233280) * (max - min)
-}
+};
 const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [{
@@ -62,7 +62,7 @@ const data = {
         Math.round(rand(-100, 100))
       ]
     }]
-}
+};
 /*</block:数据>*/
 
 const config =/*<block:配置>*/ {
@@ -76,23 +76,23 @@ const config =/*<block:配置>*/ {
             }
         }
     }
-}/*</block:配置>*/
+};/*</block:配置>*/
 module.exports = {
   config: config
-}
+};
 ```
 
 设置标题的内边距：
 
 ```js chart-editor
 /*<block:数据>*/
-let seed = 10
+let seed = 10;
 const rand = (min, max) => {
   min = min === undefined ? 0 : min
   max = max === undefined ? 1 : max
   seed = (seed * 9301 + 49297) % 233280
   return min + (seed / 233280) * (max - min)
-}
+};
 const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [{
@@ -107,7 +107,7 @@ const data = {
         Math.round(rand(-100, 100))
       ]
     }]
-}
+};
 /*</block:数据>*/
 
 const config =/*<block:配置>*/ {
@@ -125,7 +125,7 @@ const config =/*<block:配置>*/ {
             }
         }
     }
-}/*</block:配置>*/
+};/*</block:配置>*/
 module.exports = {
   config: config
 }

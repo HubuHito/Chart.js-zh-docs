@@ -8,10 +8,10 @@ The chart title defines text to draw at the top of the chart.
 
 The title configuration is passed into the `options.plugins.title` namespace. The global options for the chart title is defined in `Chart.defaults.plugins.title`.
 
-| Name | Type | Default | Description
+| 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
 | `align` | `string` | `'center'` | Alignment of the title. [more...](#align)
-| `color` | [`Color`](../general/colors.md) | `Chart.defaults.color` | Color of text.
+| `color` | [颜色](../general/colors.md) | `Chart.defaults.color` | Color of text.
 | `display` | `boolean` | `false` | Is the title shown?
 | `position` | `string` | `'top'` | Position of title. [more...](#position)
 | `font` | `Font` | `{style: 'bold'}` | See [Fonts](../general/fonts.md)
