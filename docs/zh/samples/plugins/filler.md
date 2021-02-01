@@ -1,4 +1,4 @@
-# 过滤器
+# 滤镜
 ```js chart-editor
 /* <block:配置:0> */
 const config = {
