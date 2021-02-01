@@ -4,7 +4,7 @@ title: Layout
 
 The layout configuration is passed into the `options.layout` namespace. The global options for the chart layout is defined in `Chart.defaults.layout`.
 
-| Name | Type | Default | [函数选项](../general/options.md#函数选项) | Description
+| Name | Type | Default | [Scriptable](../general/options.md#scriptable-options) | Description
 | ---- | ---- | ------- | :----: | -----------
 | `padding` | `number`\|`object` | `0` | Yes | The padding to add inside the chart. [more...](#padding)
 

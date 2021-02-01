@@ -1,6 +1,6 @@
 ### Common to all axes
 
-| 名称 | 类型 | 默认值 | 描述
+| Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
 | `type` | `string` | | Type of scale being employed. Custom scales can be created and registered with a string key. This allows changing the type of an axis for a chart.
 | `display` | `boolean`\|`string` | `true` | Controls the axis global visibility (visible when `true`, hidden when `false`). When `display: 'auto'`, the axis is visible only if at least one associated dataset is visible.

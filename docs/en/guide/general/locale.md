@@ -20,6 +20,6 @@ By default the chart is using the default locale of the platform which is runnin
 
 ## Configuration Options
 
-| 名称 | 类型 | 默认值 | 描述
+| Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
 | `locale` | `string` | `undefined` | a string with a BCP 47 language tag, leveraging on [INTL NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat).

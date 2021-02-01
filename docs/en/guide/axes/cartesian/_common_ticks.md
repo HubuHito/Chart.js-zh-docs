@@ -1,6 +1,6 @@
 ### Common options to all cartesian axes
 
-| 名称 | 类型 | 默认值 | 描述
+| Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
 | `align` | `string` | `'center'` | The tick alignment along the axis. Can be `'start'`, `'center'`, or `'end'`.
 | `crossAlign` | `string` | `'near'` | The tick alignment perpendicular to the axis. Can be `'near'`, `'center'`, or `'far'`. See [Tick Alignment](./index#tick-alignment)

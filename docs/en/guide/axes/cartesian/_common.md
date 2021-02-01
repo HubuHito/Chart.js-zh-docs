@@ -1,6 +1,6 @@
 ### Common options to all cartesian axes
 
-| 名称 | 类型 | 默认值 | 描述
+| Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
 | `bounds` | `string` | `'ticks'` | Determines the scale bounds. [more...](./index.mdx#scale-bounds)
 | `position` | `string` | | Position of the axis. [more...](./index.mdx#axis-position)

@@ -4,10 +4,10 @@ title: 折线图
 
 折线图是在一条线上绘制数据点的展现方式，通常用于显示数据趋势或两个数据集的比较。
 
-## Example Usage
+## 实例
 
 ```js chart-editor
-const config = /*<block:配置>*/{
+const config =/*<block:配置>*/ {
   type: 'line',
   data: {
     labels: [
@@ -27,7 +27,7 @@ const config = /*<block:配置>*/{
       tension: 0.1
     }]
   }
-}/*</block:配置>*/
+};/*</block:配置>*/
 
 module.exports = {
   config
@@ -82,54 +82,54 @@ module.exports = {
 
 | 名称 | 描述
 | ---- | ----
-| `clip` | How to clip relative to chartArea. Positive value allows overflow, negative value clips that many pixels inside chartArea. `0` = clip at chartArea. Clipping can also be configured per side: `clip: {left: 5, top: false, right: -2, bottom: 0}`
-| `indexAxis` | The base axis of the dataset. `'x'` for horizontal lines and `'y'` for vertical lines.
-| `label` | The label for the dataset which appears in the legend and tooltips.
-| `order` | The drawing order of dataset. Also affects order for stacking, tooltip, and legend.
-| `xAxisID` | The ID of the x-axis to plot this dataset on.
-| `yAxisID` | The ID of the y-axis to plot this dataset on.
+| `clip` | 对图表区域进行裁剪，正值表示允许溢出，负值会截断绘制区域，0表示图表区域。也可以配置具体值，如：`{left: 5, top: false, right: -2, bottom: 0}`。
+| `indexAxis` | 数据集主轴，`'x'`表示水平坐标轴，`'y'`表示垂直坐标轴。
+| `label` | 数据集标签（图例或者tooltips上面的标签）
+| `order` | 数据集绘制顺序，也会影响堆叠图、tooltip和图例的顺序。
+| `xAxisID` | x轴ID
+| `yAxisID` | Y轴ID
 
 ### 点样式
 
-The style of each point can be controlled with the following properties:
+折线图点的样式可通过如下属性配置：
 
-| Name | Description
+| 名称 | 描述
 | ---- | ----
-| `pointBackgroundColor` | The fill color for points.
-| `pointBorderColor` | The border color for points.
-| `pointBorderWidth` | The width of the point border in pixels.
-| `pointHitRadius` | The pixel size of the non-displayed point that reacts to mouse events.
-| `pointRadius` | The radius of the point shape. If set to 0, the point is not rendered.
-| `pointRotation` | The rotation of the point in degrees.
-| `pointStyle` | Style of the point. [more...](../configuration/elements.md#point-styles)
+| `pointBackgroundColor` | 填充色
+| `pointBorderColor` | 描边色
+| `pointBorderWidth` | 描边
+| `pointHitRadius` | 可交互半径（热区），值越大表示触发事件的区域越大（触发区域也受交互模式的影响），注意与半径的区域，半径表示绘制的大小，交互半径表示触发事件的面积。
+| `pointRadius` | 半径，如果为 0 则不会渲染点，便于提升性能
+| `pointRotation` | 旋转角度
+| `pointStyle` | 点样式 [查看](../configuration/elements.md#点样式)
 
-All these values, if `undefined`, fallback first to the dataset options then to the associated [`elements.point.*`](../configuration/elements.md#point-configuration) options.
+如果这些属性为`undefined`，则会取图表的配置，图表没有配置的话就取全局默认的点配置项[`elements.point.*`](../configuration/elements.md#点配置)。
 
 ### 线样式
 
-The style of the line can be controlled with the following properties:
+线条的样式可以通过以下属性来配置：
 
-| Name | Description
+| 名称 | 描述
 | ---- | ----
-| `backgroundColor` | The line fill color.
-| `borderCapStyle` | Cap style of the line. 查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap).
-| `borderColor` | The line color.
-| `borderDash` | Length and spacing of dashes. 查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash).
-| `borderDashOffset` | Offset for line dashes. 查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset).
-| `borderJoinStyle` | Line joint style. 查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin).
-| `borderWidth` | The line width (in pixels).
-| `fill` | How to fill the area under the line. See [area charts](area.md).
-| `tension` | Bezier curve tension of the line. Set to 0 to draw straightlines. This option is ignored if monotone cubic interpolation is used.
-| `showLine` | If false, the line is not drawn for this dataset.
-| `spanGaps` | If true, lines will be drawn between points with no or null data. If false, points with `NaN` data will create a break in the line. Can also be a number specifying the maximum gap length to span. The unit of the value depends on the scale used.
+| `backgroundColor` | 填充色
+| `borderCapStyle` | 线帽，查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap).
+| `borderColor` | 描边色
+| `borderDash` | 虚线模式，查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash).
+| `borderDashOffset` | 虚线偏移量，查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineDashOffset).
+| `borderJoinStyle` | 连接方式，查看[MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin).
+| `borderWidth` | 描边
+| `fill` | 如何填充折线以下部分，查看[面积图](../charts/area.md#filling-modes)
+| `tension` |  张力 (`0` 表示不是贝塞尔曲线，即直线)，配置monotone cubic interpolation会使张力失效。
+| `showLine` | 是否显示
+| `spanGaps` | 是否允许断线，如果为 true，则会在无数据或空数据的点之间绘制线条。如果为 false，则带有 NaN 数据的点将会产生一个中断。设置具体数字表示允许的最大中断点数。值的单位取决于坐标轴类型。
 
-If the value is `undefined`, `showLine` and `spanGaps` fallback to the associated [chart configuration options](#configuration-options). The rest of the values fallback to the associated [`elements.line.*`](../configuration/elements.md#line-configuration) options.
+如果值为`undefined`，`showLine` 和 `spanGaps` 会取[图表配置](#configuration-options)作为默认配置项，其他属性会使用全局配置[`elements.line.*`](../configuration/elements.md#line-configuration)的默认值。
 
 ### 交互
 
 The interaction with each point can be controlled with the following properties:
 
-| Name | Description
+| 名称 | 描述
 | ---- | -----------
 | `pointHoverBackgroundColor` | Point background color when hovered.
 | `pointHoverBorderColor` | Point border color when hovered.

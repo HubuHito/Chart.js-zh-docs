@@ -4,7 +4,7 @@ title: Interactions
 
 The interaction configuration is passed into the `options.interaction` namespace. The global interaction configuration is at `Chart.defaults.interaction`. To configure which events trigger chart interactions, see [events](./events.md#events).
 
-| 名称 | 类型 | 默认值 | 描述
+| Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
 | `mode` | `string` | `'nearest'` | Sets which elements appear in the tooltip. See [Interaction Modes](./modes.md#interaction-modes) for details.
 | `intersect` | `boolean` | `true` | if true, the hover mode only applies when the mouse position intersects an item on the chart.
