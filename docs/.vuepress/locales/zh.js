@@ -101,6 +101,17 @@ module.exports = {
             "axes/labelling",
             "axes/styling",
         ]
+      },
+      {
+        title: "开发指南",
+        collapsable: false,
+        children: [
+          "developers/api",
+          "developers/updates",
+          "developers/plugins",
+          "developers/charts",
+          "developers/axes"
+        ]
       }
     ],
     '/zh/samples/': [{
