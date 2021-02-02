@@ -87,6 +87,7 @@ module.exports = {
                 "axes/cartesian/linear",
                 "axes/cartesian/logarithmic",
                 "axes/cartesian/time",
+                "axes/cartesian/timeseries",
               ]
             },
             {
