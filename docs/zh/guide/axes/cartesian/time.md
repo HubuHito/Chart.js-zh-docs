@@ -2,10 +2,6 @@
 title: Time Cartesian Axis
 ---
 
-import CommonAll from '../_common.md'
-import CommonCartesian from './_common.md'
-import CommonTicks from './_common_ticks.md'
-
 The time scale is used to display times and dates. Data are spread according to the amount of time between data points. When building its ticks, it will automatically calculate the most comfortable unit base on the size of the scale.
 
 ## Date Adapters
@@ -40,8 +36,13 @@ When providing data for the time scale, Chart.js uses timestamps defined as mill
 | `time.stepSize` | `number` | `1` | The number of units between grid lines.
 | `time.minUnit` | `string` | `'millisecond'` | The minimum display format to be used for a time unit.
 
-<CommonCartesian />
-<CommonAll />
+| 名称 | 类型 | 默认值 | 描述
+| ---- | ---- | ------- | -----------
+| `bounds` | `string` | `'ticks'` | Determines the scale bounds. [more...](./index.mdx#scale-bounds)
+| `position` | `string` | | Position of the axis. [more...](./index.mdx#axis-position)
+| `axis` | `string` | | Which type of axis this is. Possible values are: `'x'`, `'y'`. If not set, this is inferred from the first character of the ID which should be `'x'` or `'y'`.
+| `offset` | `boolean` | `false` | If true, extra space is added to the both edges and the axis is scaled to fit into the chart area. This is set to `true` for a bar chart by default.
+| `scaleLabel` | `object` | | Scale title configuration. [more...](../labelling.md#scale-title-configuration)
 
 #### Time Units
 

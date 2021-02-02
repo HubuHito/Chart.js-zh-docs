@@ -1,44 +1,22 @@
 ---
-title: Mixed Chart Types
+title: 混合图表
 ---
 
 With Chart.js, it is possible to create mixed charts that are a combination of two or more different chart types. A common example is a bar chart that also includes a line dataset.
 
 When creating a mixed chart, we specify the chart type on each dataset.
 
-```javascript
-var mixedChart = new Chart(ctx, {
+```js chart-editor
+//<block:配置>
+var config = {
     data: {
-        datasets: [{
-            type: 'bar',
-            label: 'Bar Dataset',
-            data: [10, 20, 30, 40]
-        }, {
-            type: 'line',
-            label: 'Line Dataset',
-            data: [50, 50, 50, 50],
-        }],
-        labels: ['January', 'February', 'March', 'April']
-    },
-    options: options
-});
-```
-
-At this point, we have a chart rendering how we'd like. It's important to note that the default options for the charts are only considered at the dataset level and are not merged at the chart level in this case.
-
-import { useEffect } from 'react';
-
-export const ExampleChart = () => {
-  useEffect(() => {
-    const cfg = {
-      data: {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April'
-        ],
-        datasets: [{
+      labels: [
+        'January',
+        'February',
+        'March',
+        'April'
+      ],
+      datasets: [{
           type: 'bar',
           label: 'Bar Dataset',
           data: [10, 20, 30, 40],
@@ -50,23 +28,23 @@ export const ExampleChart = () => {
           data: [50, 50, 50, 50],
           fill: false,
           borderColor: 'rgb(54, 162, 235)'
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
         }
       }
-    };
-    const chart = new Chart(document.getElementById('chartjs-0').getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas id="chartjs-0" className="chartjs"></canvas></div>;
+    }
+};
+//</block:配置>
+module.exports = {
+  config
 }
+```
 
-<ExampleChart/>
+At this point, we have a chart rendering how we'd like. It's important to note that the default options for the charts are only considered at the dataset level and are not merged at the chart level in this case.
 
 ## Drawing order
 

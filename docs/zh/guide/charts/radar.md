@@ -1,81 +1,67 @@
 ---
-title: Radar Chart
+title: 雷达图
 ---
 
 A radar chart is a way of showing multiple data points and the variation between them.
 
 They are often useful for comparing the points of two or more different data sets.
 
-import { useEffect } from 'react';
-
-export const ExampleChart = () => {
-  useEffect(() => {
-    const cfg = {
-      type: 'radar',
-      data: {
-        labels: [
-          'Eating',
-          'Drinking',
-          'Sleeping',
-          'Designing',
-          'Coding',
-          'Cycling',
-          'Running'
-        ],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 90, 81, 56, 55, 40],
-          fill: true,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgb(255, 99, 132)',
-          pointBackgroundColor: 'rgb(255, 99, 132)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgb(255, 99, 132)'
-        }, {
-          label: 'My Second Dataset',
-          data: [28, 48, 40, 19, 96, 27, 100],
-          fill: true,
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgb(54, 162, 235)',
-          pointBackgroundColor: 'rgb(54, 162, 235)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgb(54, 162, 235)'
-        }]
-      },
-      options: {
-        elements: {
-          line: {
-            tension: 0,
-            borderWidth: 3
-          }
+```js chart-editor
+//<block:配置>
+var config = {
+    type: 'radar',
+    data: {
+      labels: [
+        'Eating',
+        'Drinking',
+        'Sleeping',
+        'Designing',
+        'Coding',
+        'Cycling',
+        'Running'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [65, 59, 90, 81, 56, 55, 40],
+        fill: true,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 99, 132)'
+      }, {
+        label: 'My Second Dataset',
+        data: [28, 48, 40, 19, 96, 27, 100],
+        fill: true,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgb(54, 162, 235)',
+        pointBackgroundColor: 'rgb(54, 162, 235)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(54, 162, 235)'
+      }]
+    },
+    options: {
+      elements: {
+        line: {
+          tension: 0,
+          borderWidth: 3
         }
       }
-    };
-    const chart = new Chart(document.getElementById('chartjs-0').getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas id="chartjs-0" className="chartjs"></canvas></div>;
+    }
+};
+//</block:配置>
+module.exports = {
+  config
 }
-
-<ExampleChart/>
-
-## Example Usage
-
-```javascript
-var myRadarChart = new Chart(ctx, {
-    type: 'radar',
-    data: data,
-    options: options
-});
 ```
 
 ## Dataset Properties
 
 The radar chart allows a number of properties to be specified for each dataset. These are used to set display properties for a specific dataset. For example, the colour of a line is generally set this way.
 
-| Name | Type | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
+| 名称 | 类型 | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
 | ---- | ---- | :----: | :----: | ----
 | [`backgroundColor`](#line-styling) | [颜色](../general/colors.md) | Yes | - | `'rgba(0, 0, 0, 0.1)'`
 | [`borderCapStyle`](#line-styling) | `string` | Yes | - | `'butt'`
@@ -109,7 +95,7 @@ The radar chart allows a number of properties to be specified for each dataset. 
 | [`pointStyle`](#point-styling) | `string`\|`Image` | Yes | Yes | `'circle'`
 | [`spanGaps`](#line-styling) | `boolean` | - | - | `undefined`
 
-### General
+### 基本配置
 
 | 名称 | 描述
 | ---- | ----

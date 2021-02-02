@@ -1,6 +1,6 @@
 ### Common to all axes
 
-| Name | Type | Scriptable | Default | Description
+| 名称 | 类型 | Scriptable | Default | Description
 | ---- | ---- | :-------------------------------: | ------- | -----------
 | `callback` | `function` | | | Returns the string representation of the tick value as it should be displayed on the chart. See [callback](../axes/labelling.md#creating-custom-tick-formats).
 | `display` | `boolean` | | `true` | If true, show tick labels.

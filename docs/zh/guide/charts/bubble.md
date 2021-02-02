@@ -1,55 +1,40 @@
 ---
-title: Bubble Chart
+title: 气泡图
 ---
 
 A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles.
 
-import { useEffect } from 'react';
-
-export const ExampleChart = () => {
-  useEffect(() => {
-    const cfg = {
-      type: 'bubble',
-      data: {
-        datasets: [{
-          label: 'First Dataset',
-          data: [{
-            x: 20,
-            y: 30,
-            r: 15
-          }, {
-            x: 40,
-            y: 10,
-            r: 10
-          }],
-          backgroundColor: 'rgb(255, 99, 132)'
-        }]
-      }
-    };
-    const chart = new Chart(document.getElementById('chartjs-0').getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas id="chartjs-0" className="chartjs"></canvas></div>;
-}
-
-<ExampleChart/>
-
-## Example Usage
-
-```javascript
-// For a bubble chart
-var myBubbleChart = new Chart(ctx, {
+```js chart-editor
+//<block:配置>
+var config = {
     type: 'bubble',
-    data: data,
-    options: options
-});
+    data: {
+      datasets: [{
+        label: 'First Dataset',
+        data: [{
+          x: 20,
+          y: 30,
+          r: 15
+        }, {
+          x: 40,
+          y: 10,
+          r: 10
+        }],
+        backgroundColor: 'rgb(255, 99, 132)'
+      }]
+    } 
+};
+//</block:配置>
+module.exports = {
+  config
+}
 ```
 
 ## Dataset Properties
 
 The bubble chart allows a number of properties to be specified for each dataset. These are used to set display properties for a specific dataset. For example, the colour of the bubbles is generally set this way.
 
-| Name | Type | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
+| 名称 | 类型 | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
 | ---- | ---- | :----: | :----: | ----
 | [`backgroundColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
 | [`borderColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
@@ -67,7 +52,7 @@ The bubble chart allows a number of properties to be specified for each dataset.
 | [`rotation`](#styling) | `number` | Yes | Yes | `0`
 | [`radius`](#styling) | `number` | Yes | Yes | `3`
 
-### General
+### 基本配置
 
 | 名称 | 描述
 | ---- | ----

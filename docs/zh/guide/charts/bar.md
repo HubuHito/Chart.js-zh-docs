@@ -1,82 +1,66 @@
 ---
-title: Bar Chart
+title: 柱形图
 ---
 
-A bar chart provides a way of showing data values represented as vertical bars. It is sometimes used to show trend data, and the comparison of multiple data sets side by side.
+柱状图提供了一种用竖条表示数据值的显示方法，有时也用于显示数据趋势，可以并排多个数据集。
 
-import { useEffect } from 'react';
-
-export const ExampleChart0 = () => {
-  useEffect(() => {
-    const cfg = {
-      type: 'bar',
-      data: {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July'
+```js chart-editor
+//<block:配置>
+const config = {
+    type: 'bar',
+    data: {
+      labels: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [65, 59, 80, 81, 56, 55, 40],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 205, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(201, 203, 207, 0.2)'
         ],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
-          ],
-          borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 205, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(54, 162, 235)',
+          'rgb(153, 102, 255)',
+          'rgb(201, 203, 207)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
         }
       }
-    };
-    const chart = new Chart(document.getElementById('chartjs-0').getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas id="chartjs-0" className="chartjs"></canvas></div>;
+    }
+};
+//</block:配置>
+module.exports = {
+  config
 }
-
-<ExampleChart0/>
-
-## Example Usage
-
-```javascript
-var myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: options
-});
 ```
 
-## Dataset Properties
+## 数据集属性
 
-The bar chart allows a number of properties to be specified for each dataset.
-These are used to set display properties for a specific dataset. For example,
-the color of the bars is generally set this way.
+可以给每个数据集设置特定的属性，柱形图图相关配置如下：
 
-| Name | Type | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
+| 名称 | 类型 | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | 默认值
 | ---- | ---- | :----: | :----: | ----
 | [`backgroundColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
 | [`base`](#general) | `number` | Yes | Yes |
@@ -96,42 +80,42 @@ the color of the bars is generally set this way.
 | [`xAxisID`](#general) | `string` | - | - | first x axis
 | [`yAxisID`](#general) | `string` | - | - | first y axis
 
-### General
+### 基本配置
 
 | 名称 | 描述
 | ---- | ----
-| `base` | Base value for the bar in data units along the value axis. If not set, defaults to the value axis base value.
-| `clip` | How to clip relative to chartArea. Positive value allows overflow, negative value clips that many pixels inside chartArea. `0` = clip at chartArea. Clipping can also be configured per side: `clip: {left: 5, top: false, right: -2, bottom: 0}`
-| `indexAxis` | The base axis of the dataset. `'x'` for vertical bars and `'y'` for horizontal bars.
-| `label` | The label for the dataset which appears in the legend and tooltips.
-| `order` | The drawing order of dataset. Also affects order for stacking, tooltip, and legend.
-| `xAxisID` | The ID of the x-axis to plot this dataset on.
-| `yAxisID` | The ID of the y-axis to plot this dataset on.
+| `base` | 基本值（单位以数值轴（一般为y轴）的为准），如果没有设置，默认取值轴为基本值。
+| `clip` | 对图表区域进行裁剪，正值表示允许溢出，负值会截断绘制区域，0表示图表区域。也可以配置具体值，如：`{left: 5, top: false, right: -2, bottom: 0}`。
+| `indexAxis` | 数据集主轴，`'x'`表示水平坐标轴，`'y'`表示垂直坐标轴。
+| `label` | 数据集标签（图例或者tooltips上面的标签）
+| `order` | 数据集绘制顺序，也会影响堆叠图、tooltip和图例的顺序。
+| `xAxisID` | x轴ID
+| `yAxisID` | Y轴ID
 
-### Styling
+### 样式
 
-The style of each bar can be controlled with the following properties:
+每个柱子的样式可通过如下配置项设置：
 
 | 名称 | 描述
 | ---- | ----
-| `backgroundColor` | The bar background color.
-| `borderColor` | The bar border color.
-| [`borderSkipped`](#borderskipped) | The edge to skip when drawing bar.
-| [`borderWidth`](#borderwidth) | The bar border width (in pixels).
-| [`borderRadius`](#borderradius) | The bar border radius (in pixels).
-| `clip` | How to clip relative to chartArea. Positive value allows overflow, negative value clips that many pixels inside chartArea. `0` = clip at chartArea. Clipping can also be configured per side: `clip: {left: 5, top: false, right: -2, bottom: 0}`
+| `backgroundColor` | 背景色
+| `borderColor` | 描边色
+| [`borderSkipped`](#borderskipped) | 边框绘制方式
+| [`borderWidth`](#描边) | 描边
+| [`borderRadius`](#圆角) | 圆角
+| `clip` | 对图表区域进行裁剪，正值表示允许溢出，负值会截断绘制区域，0表示图表区域。也可以配置具体值，如：`{left: 5, top: false, right: -2, bottom: 0}`。
 
-All these values, if `undefined`, fallback to the associated [`elements.bar.*`](../configuration/elements.md#bar-configuration) options.
+如果上面这些配置值为`undefined`，则会取图表配置项默认值[`elements.bar.*`](../configuration/elements.md#条形配置)。
 
 #### borderSkipped
 
-This setting is used to avoid drawing the bar stroke at the base of the fill, or disable the border radius.
-In general, this does not need to be changed except when creating chart types
-that derive from a bar chart.
+此设置用于避免基线被填充，一般来说，除非创建从柱状图派生的图表类型，否则不需要更改。
 
-**Note:** for negative bars in a vertical chart, `top` and `bottom` are flipped. Same goes for `left` and `right` in a horizontal chart.
+::: tip
+垂直负数的柱形图，`top` 和 `bottom` 反向的，同样水平柱形图`left` 和 `right`也是反向的。
+:::
 
-Options are:
+可选值如下：
 
 * `'start'`
 * `'end'`
@@ -141,30 +125,30 @@ Options are:
 * `'right'`
 * `false`
 
-#### borderWidth
+#### 描边
 
-If this value is a number, it is applied to all sides of the rectangle (left, top, right, bottom), except [`borderSkipped`](#borderskipped). If this value is an object, the `left` property defines the left border width. Similarly, the `right`, `top`, and `bottom` properties can also be specified. Omitted borders and [`borderSkipped`](#borderskipped) are skipped.
+数值类型表示设置（left, top, right, bottom）边框，对象类型可设置具体的值，[`borderSkipped`](#borderskipped)会影响边框的绘制。
 
-#### borderRadius
+#### 圆角
 
-If this value is a number, it is applied to all corners of the rectangle (topLeft, topRight, bottomLeft, bottomRight), except corners touching the [`borderSkipped`](#borderskipped). If this value is an object, the `topLeft` property defines the top-left corners border radius. Similarly, the `topRight`, `bottomLeft`, and `bottomRight` properties can also be specified. Omitted corners and those touching the [`borderSkipped`](#borderskipped) are skipped. For example if the `top` border is skipped, the border radius for the corners `topLeft` and `topRight` will be skipped as well.
+数值类型表示设置（topLeft, topRight, bottomLeft, bottomRight）圆角，对象类型可设置具体的值，[`borderSkipped`](#borderskipped)会影响圆角的绘制。
 
-### Interactions
+### 交互
 
-The interaction with each bar can be controlled with the following properties:
+每个柱形相关交互配置项如下：
 
 | 名称 | 描述
 | ---- | -----------
-| `hoverBackgroundColor` | The bar background color when hovered.
-| `hoverBorderColor` | The bar border color when hovered.
-| `hoverBorderWidth` | The bar border width when hovered (in pixels).
-| `hoverBorderRadius` | The bar border radius when hovered (in pixels).
+| `hoverBackgroundColor` | 悬浮时背景色
+| `hoverBorderColor` | 悬浮时描边色
+| `hoverBorderWidth` | 悬浮时描边
+| `hoverBorderRadius` | 悬浮时圆角
 
-All these values, if `undefined`, fallback to the associated [`elements.bar.*`](../configuration/elements.md#bar-configuration) options.
+如果上面这些配置值为`undefined`，则会取图表配置项默认值[`elements.bar.*`](../configuration/elements.md#条形配置)。
 
-## Dataset Configuration
+## 数据集配置项
 
-The bar chart accepts the following configuration from the associated dataset options:
+柱状图接受以下相关的数据集选项配置：
 
 | 名称 | 类型 | 默认值 | 描述
 | ---- | ---- | ------- | -----------
@@ -175,18 +159,34 @@ The bar chart accepts the following configuration from the associated dataset op
 | `maxBarThickness` | `number` | | Set this to ensure that bars are not sized thicker than this.
 | `minBarLength` | `number` | | Set this to ensure that bars have a minimum length in pixels.
 
-### Example Usage
-
-```javascript
-data: {
-    datasets: [{
-        barPercentage: 0.5,
-        barThickness: 6,
-        maxBarThickness: 8,
-        minBarLength: 2,
-        data: [10, 20, 30, 40, 50, 60, 70]
-    }]
+```js chart-editor
+//<block:配置>
+const config = {
+    type: 'bar',
+    data: {
+      labels: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July'
+      ],
+      datasets: [{
+          label: '数据集',
+          barPercentage: 0.5,
+          barThickness: 6,
+          maxBarThickness: 8,
+          minBarLength: 2,
+          data: [10, 20, 30, 40, 50, 60, 70]
+      }]
+    },
 };
+//</block:配置>
+module.exports = {
+  config
+}
 ```
 
 ### barThickness
@@ -287,7 +287,7 @@ var stackedBar = new Chart(ctx, {
 
 The following dataset properties are specific to stacked bar charts.
 
-| Name | Type | Description
+| 名称 | 类型 | Description
 | ---- | ---- | -----------
 | `stack` | `string` | The ID of the group to which this dataset belongs to (when stacked, each group will be a separate stack).
 
@@ -297,14 +297,14 @@ A horizontal bar chart is a variation on a vertical bar chart. It is sometimes u
 To achieve this you will have to set the `indexAxis` property in the options object to `'y'`.
 The default for this property is `'x'` and thus will show vertical bars.
 
-export const ExampleChart1 = () => {
-  useEffect(() => {
-    const cfg = {
-      type: 'bar',
-      data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-		  axis: 'y',
+```js chart-editor
+//<block:配置>
+var config = {
+    type: 'bar',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+          axis: 'y',
           label: 'My First Dataset',
           data: [65, 59, 80, 81, 56, 55, 40],
           fill: false,
@@ -328,34 +328,20 @@ export const ExampleChart1 = () => {
           ],
           borderWidth: 1
         }]
-      },
-      options: {
-      	indexAxis: 'y',
-        scales: {
-          x: {
-            beginAtZero: true
-          }
+    },
+    options: {
+      indexAxis: 'y',
+      scales: {
+        x: {
+          beginAtZero: true
         }
       }
-    };
-    const chart = new Chart(document.getElementById('chartjs-1').getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas id="chartjs-1" className="chartjs"></canvas></div>;
-}
-
-<ExampleChart1/>
-
-## Example
-
-```javascript
-var myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: data,
-    options: {
-    	indexAxis: 'y'
     }
-});
+};
+//</block:配置>
+module.exports = {
+  config
+}
 ```
 
 ### Config Options

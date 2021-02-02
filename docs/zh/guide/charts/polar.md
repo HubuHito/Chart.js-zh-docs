@@ -1,61 +1,47 @@
 ---
-title: Polar Area Chart
+title: 南丁格尔玫瑰图
 ---
 
 Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value.
 
 This type of chart is often useful when we want to show a comparison data similar to a pie chart, but also show a scale of values for context.
 
-import { useEffect } from 'react';
-
-export const ExampleChart = () => {
-  useEffect(() => {
-    const cfg = {
-      type: 'polarArea',
-      data: {
-        labels: [
-          'Red',
-          'Green',
-          'Yellow',
-          'Grey',
-          'Blue'
-        ],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [11, 16, 7, 3, 14],
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(75, 192, 192)',
-            'rgb(255, 205, 86)',
-            'rgb(201, 203, 207)',
-            'rgb(54, 162, 235)'
-          ]
-        }]
-      }
-    };
-    const chart = new Chart(document.getElementById('chartjs-0').getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas id="chartjs-0" className="chartjs"></canvas></div>;
-}
-
-<ExampleChart/>
-
-## Example Usage
-
-```javascript
-new Chart(ctx, {
-    data: data,
+```js chart-editor
+//<block:配置>
+var config = {
     type: 'polarArea',
-    options: options
-});
+    data: {
+      labels: [
+        'Red',
+        'Green',
+        'Yellow',
+        'Grey',
+        'Blue'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [11, 16, 7, 3, 14],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(75, 192, 192)',
+          'rgb(255, 205, 86)',
+          'rgb(201, 203, 207)',
+          'rgb(54, 162, 235)'
+        ]
+      }]
+    }
+};
+//</block:配置>
+module.exports = {
+  config
+}
 ```
 
 ## Dataset Properties
 
 The following options can be included in a polar area chart dataset to configure options for that specific dataset.
 
-| Name | Type | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
+| 名称 | 类型 | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
 | ---- | ---- | :----: | :----: | ----
 | [`backgroundColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
 | [`borderAlign`](#border-alignment) | `string` | Yes | Yes | `'center'`
@@ -67,7 +53,7 @@ The following options can be included in a polar area chart dataset to configure
 | [`hoverBorderColor`](#interactions) | [颜色](../general/colors.md) | Yes | Yes | `undefined`
 | [`hoverBorderWidth`](#interactions) | `number` | Yes | Yes | `undefined`
 
-### General
+### 基本配置
 
 | 名称 | 描述
 | ---- | ----

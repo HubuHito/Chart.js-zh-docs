@@ -2,15 +2,13 @@
 title: Styling
 ---
 
-import CommonTicks from './_common_ticks.md'
-
 There are a number of options to allow styling an axis. There are settings to control [grid lines](#grid-line-configuration) and [ticks](#tick-configuration).
 
 ## Grid Line Configuration
 
 The grid line configuration is nested under the scale configuration in the `gridLines` key. It defines options for the grid lines that run perpendicular to the axis.
 
-| Name | Type | Scriptable | Indexable | Default | Description
+| 名称 | 类型 | Scriptable | Indexable | Default | Description
 | ---- | ---- | :-------------------------------: | :-----------------------------: | ------- | -----------
 | `borderColor` | [颜色](../general/colors.md) | | | | If set, used as the color of the border line. If unset, the first `color` option is resolved and used.
 | `borderWidth` | `number` | | | | If set, used as the width of the border line. If unset, the first `lineWidth` option is resolved and used.
@@ -35,7 +33,17 @@ The scriptable context is described in [Options](../general/options.md#tick) sec
 
 ## Tick Configuration
 
-<CommonTicks />
+| 名称 | 类型 | Scriptable | Default | Description
+| ---- | ---- | :-------------------------------: | ------- | -----------
+| `callback` | `function` | | | Returns the string representation of the tick value as it should be displayed on the chart. See [callback](../axes/labelling.md#creating-custom-tick-formats).
+| `display` | `boolean` | | `true` | If true, show tick labels.
+| `color` | [颜色](../general/colors.md) | Yes | `Chart.defaults.color` | Color of ticks.
+| `font` | `Font` | Yes | `Chart.defaults.font` | See [Fonts](../general/fonts.md)
+| `major` | `object` | | `{}` | [Major ticks configuration](./styling.mdx#major-tick-configuration).
+| `padding` | `number` | | `0` | Sets the offset of the tick labels from the axis
+| `textStrokeColor` | [颜色](../general/colors.md) | Yes | `` | The color of the stroke around the text.
+| `textStrokeWidth` | `number` | Yes | `0` | Stroke width around the text.
+| `z` | `number` | | `0` | z-index of tick layer. Useful when ticks are drawn on chart area. Values &lt;= 0 are drawn under datasets, &gt; 0 on top.
 
 The scriptable context is described in [Options](../general/options.md#tick) section.
 

@@ -1,5 +1,5 @@
 ---
-title: Doughnut and Pie Charts
+title: 环形图
 ---
 
 Pie and doughnut charts are probably the most commonly used charts. They are divided into segments, the arc of each segment shows the proportional value of each piece of data.
@@ -10,93 +10,66 @@ Pie and doughnut charts are effectively the same class in Chart.js, but have one
 
 They are also registered under two aliases in the `Chart` core. Other than their different default value, and different alias, they are exactly the same.
 
-import { useEffect, useRef } from 'react';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs
-    defaultValue='doughnut'
-    values={[
-        {label: 'Doughnut', value: 'doughnut' },
-        {label: 'Pie', value: 'pie' },
-    ]}
->
-<TabItem value="doughnut">
-
-```jsx live
-function example() {
-  const canvas = useRef(null);
-  useEffect(() => {
-    const cfg = {
-      type: 'doughnut',
-      data: {
-        labels: [
-          'Red',
-          'Blue',
-          'Yellow'
+```js chart-editor
+//<block:配置>
+var config = {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Red',
+        'Blue',
+        'Yellow'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [300, 50, 100],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
         ],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [300, 50, 100],
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-          ],
-          hoverOffset: 4
-        }]
-      }
-    };
-    const chart = new Chart(canvas.current.getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas ref={canvas} className="chartjs"></canvas></div>;
+        hoverOffset: 4
+      }]
+    } 
+};
+//</block:配置>
+module.exports = {
+  config
 }
 ```
-
-</TabItem>
-
-<TabItem value="pie">
-
-```jsx live
-function example() {
-  const canvas = useRef(null);
-  useEffect(() => {
-    const cfg = {
-      type: 'pie',
-      data: {
-        labels: [
-          'Red',
-          'Blue',
-          'Yellow'
+```js chart-editor
+//<block:配置>
+var config = {
+    type: 'pie',
+    data: {
+      labels: [
+        'Red',
+        'Blue',
+        'Yellow'
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [300, 50, 100],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
         ],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [300, 50, 100],
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-          ],
-          hoverOffset: 4
-        }]
-      }
-    };
-    const chart = new Chart(canvas.current.getContext('2d'), cfg);
-    return () => chart.destroy();
-  });
-  return <div className="chartjs-wrapper"><canvas ref={canvas} className="chartjs"></canvas></div>;
+        hoverOffset: 4
+      }]
+    } 
+};
+//</block:配置>
+module.exports = {
+  config
 }
 ```
-
-</TabItem>
-</Tabs>
 
 ## Dataset Properties
 
 The doughnut/pie chart allows a number of properties to be specified for each dataset. These are used to set display properties for a specific dataset. For example, the colours of the dataset's arcs are generally set this way.
 
-| Name | Type | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
+| 名称 | 类型 | [函数选项](../general/options.md#函数选项) | [索引选项](../general/options.md#索引选项) | Default
 | ---- | ---- | :----: | :----: | ----
 | [`backgroundColor`](#styling) | [颜色](../general/colors.md) | Yes | Yes | `'rgba(0, 0, 0, 0.1)'`
 | [`borderAlign`](#border-alignment) | `string` | Yes | Yes | `'center'`
@@ -113,7 +86,7 @@ The doughnut/pie chart allows a number of properties to be specified for each da
 | [`rotation`](#general) | `number` | - | - | `undefined`
 | [`weight`](#styling) | `number` | - | - | `1`
 
-### General
+### 基本配置
 
 | 名称 | 描述
 | ---- | ----

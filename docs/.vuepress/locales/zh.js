@@ -62,7 +62,43 @@ module.exports = {
         title: '图表类型',
         collapsable: false,
         children: [
-            'charts/line',
+            "charts/line",
+            "charts/bar",
+            "charts/radar",
+            "charts/doughnut",
+            "charts/polar",
+            "charts/bubble",
+            "charts/scatter",
+            "charts/area",
+            "charts/mixed"
+        ]
+      },
+      {
+        title: '坐标轴',
+        collapsable: false,
+        children: [
+            "axes/",
+            {
+              title: '笛卡尔坐标',
+              collapsable: false,
+              children: [
+                "axes/cartesian/",
+                "axes/cartesian/category",
+                "axes/cartesian/linear",
+                "axes/cartesian/logarithmic",
+                "axes/cartesian/time",
+              ]
+            },
+            {
+              title: '径向坐标',
+              collapsable: false,
+              children: [
+                'axes/radial/',
+                'axes/radial/linear'
+              ]
+            },
+            "axes/labelling",
+            "axes/styling",
         ]
       }
     ],
