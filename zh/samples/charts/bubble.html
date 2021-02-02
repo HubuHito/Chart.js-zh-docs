@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>气泡图 | Chart.js 中文文档</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/Chart.js-zh-docs/favicon.png">
+    <meta name="description" content="Chart.js 中文文档">
+    <link rel="preload" href="/Chart.js-zh-docs/assets/css/0.styles.33cd3f18.css" as="style"><link rel="preload" href="/Chart.js-zh-docs/assets/js/app.6aa5dc58.js" as="script"><link rel="preload" href="/Chart.js-zh-docs/assets/js/2.9c21abb6.js" as="script"><link rel="preload" href="/Chart.js-zh-docs/assets/js/109.fb773c52.js" as="script"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/10.b51b08e5.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/100.fdcd910f.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/101.05019a01.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/102.95d6bf90.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/103.7e4eba63.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/104.bf3dfb80.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/105.b9c7def3.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/106.d7cbe6d8.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/107.086f5443.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/108.7b48b7db.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/11.12f90b77.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/110.04148a10.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/111.6448f84a.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/112.3d0437e2.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/113.a6b7f894.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/114.7ee8875a.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/115.8cad1bf3.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/116.d43af88c.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/117.919979f4.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/118.41c00c6f.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/119.296d16be.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/12.01b56717.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/120.ef0eec50.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/121.00842361.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/122.eacedc1f.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/123.bee63c10.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/124.444b6a96.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/125.b1eca569.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/126.44478fcb.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/13.34658902.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/14.e5db01c7.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/15.1d116b28.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/16.29410c6c.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/17.bc4f5c2a.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/18.00c72dc5.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/19.d55b6ad0.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/20.7a50f33a.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/21.05278d38.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/22.f512868f.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/23.f6385ed7.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/24.1c236e0a.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/25.f9e5b696.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/26.d22203d9.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/27.c46af4eb.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/28.fc627eb9.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/29.9e235e00.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/3.e474eb1f.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/30.4eb8dfd3.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/31.295f3ef8.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/32.de2ee9ce.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/33.6b91d420.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/34.8505006a.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/35.aa016fdf.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/36.c22011ff.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/37.d4a25fc7.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/38.4277c492.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/39.e3cdbe3f.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/4.1facf28c.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/40.c002e2cc.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/41.1f872c21.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/42.dfcf7b3c.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/43.652793b4.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/44.0d7e92a5.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/45.51b152e5.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/46.35f820ca.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/47.df9f6f50.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/48.cffa3f21.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/49.be5af54f.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/5.ddba51bd.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/50.9958c6ed.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/51.bbf59a41.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/52.78aaa3fb.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/53.89d386ba.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/54.cc9616d7.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/55.442904be.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/56.f0c54d6c.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/57.187671d1.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/58.ef044b00.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/59.6f410bde.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/6.b42003ae.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/60.df92ae52.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/61.42beb0bf.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/62.42d85d92.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/63.fda0ee15.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/64.d815b417.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/65.0661d897.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/66.fef14e01.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/67.8558482e.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/68.ca12c04d.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/69.8befcf2d.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/7.25c5107c.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/70.dcc5258d.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/71.e28d452c.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/72.664f3112.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/73.df1d2542.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/74.c09bc2b5.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/75.101f3aac.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/76.930dab64.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/77.7054cb1c.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/78.c8aa74ac.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/79.ad7134f2.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/8.1fd2416a.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/80.df8ffa86.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/81.e11efca1.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/82.58667096.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/83.30fa1e0b.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/84.c8944d3d.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/85.24fb71aa.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/86.8b6f649b.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/87.a4b23f92.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/88.e9a4e749.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/89.6c46b008.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/9.86d98c3f.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/90.3ce4d436.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/91.6724600d.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/92.061931be.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/93.fec9f589.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/94.276f5c51.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/95.f7132345.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/96.a3bf9354.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/97.7b703ac3.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/98.d0392e69.js"><link rel="prefetch" href="/Chart.js-zh-docs/assets/js/99.137bdd54.js">
+    <link rel="stylesheet" href="/Chart.js-zh-docs/assets/css/0.styles.33cd3f18.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Chart.js-zh-docs/zh/" class="home-link router-link-active"><img src="/Chart.js-zh-docs/favicon.png" alt="Chart.js 中文文档" class="logo"> <span class="site-name can-hide">Chart.js 中文文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Chart.js-zh-docs/zh/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/Chart.js-zh-docs/zh/guide/getting-started/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/Chart.js-zh-docs/zh/samples/charts/bar.html" class="nav-link">
+  API例子
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="选择语言" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="选择语言" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Chart.js-zh-docs/en/" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/Chart.js-zh-docs/zh/samples/charts/bubble.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Chart.js-zh-docs/zh/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/Chart.js-zh-docs/zh/guide/getting-started/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/Chart.js-zh-docs/zh/samples/charts/bar.html" class="nav-link">
+  API例子
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="选择语言" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="选择语言" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Chart.js-zh-docs/en/" class="nav-link">
+  English
+</a></li><li class="dropdown-item"><!----> <a href="/Chart.js-zh-docs/zh/samples/charts/bubble.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>图表</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Chart.js-zh-docs/zh/samples/charts/bar.html" class="sidebar-link">柱形图</a></li><li><a href="/Chart.js-zh-docs/zh/samples/charts/bubble.html" aria-current="page" class="active sidebar-link">气泡图</a></li><li><a href="/Chart.js-zh-docs/zh/samples/charts/doughnut.html" class="sidebar-link">环形图</a></li><li><a href="/Chart.js-zh-docs/zh/samples/charts/line.html" class="sidebar-link">折线图</a></li><li><a href="/Chart.js-zh-docs/zh/samples/charts/polarArea.html" class="sidebar-link">南丁格尔玫瑰图</a></li><li><a href="/Chart.js-zh-docs/zh/samples/charts/radar.html" class="sidebar-link">雷达图</a></li><li><a href="/Chart.js-zh-docs/zh/samples/charts/scatter.html" class="sidebar-link">散点图</a></li><li><a href="/Chart.js-zh-docs/zh/samples/charts/mixed.html" class="sidebar-link">混合图表</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>布局</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Chart.js-zh-docs/zh/samples/layouts/layouts.html" class="sidebar-link">图表布局</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>坐标轴</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Chart.js-zh-docs/zh/samples/scale/scale.html" class="sidebar-link">坐标轴</a></li><li><a href="/Chart.js-zh-docs/zh/samples/scale/category.html" class="sidebar-link">分类轴</a></li><li><a href="/Chart.js-zh-docs/zh/samples/scale/linear.html" class="sidebar-link">线性轴</a></li><li><a href="/Chart.js-zh-docs/zh/samples/scale/radialLinear.html" class="sidebar-link">径向轴</a></li><li><a href="/Chart.js-zh-docs/zh/samples/scale/time.html" class="sidebar-link">时间轴</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>图形元素</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Chart.js-zh-docs/zh/samples/elements/line.html" class="sidebar-link">线段</a></li><li><a href="/Chart.js-zh-docs/zh/samples/elements/point.html" class="sidebar-link">点</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>插件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Chart.js-zh-docs/zh/samples/plugins/filler.html" class="sidebar-link">滤镜</a></li><li><a href="/Chart.js-zh-docs/zh/samples/plugins/legend.html" class="sidebar-link">图例</a></li><li><a href="/Chart.js-zh-docs/zh/samples/plugins/tooltip.html" class="sidebar-link">tooltip</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="气泡图"><a href="#气泡图" class="header-anchor">#</a> 气泡图</h1> <div class="chart-editor" data-v-62cab2ba><div class="chart-view" data-v-62cab2ba><canvas></canvas></div> <div class="chart-actions" data-v-477f40a4 data-v-62cab2ba></div> <div class="code-editor" data-v-51c0489c data-v-62cab2ba><div class="code-editor-header" data-v-51c0489c><div class="code-editor-tabs" data-v-51c0489c><button class="code-editor-tab active" data-v-51c0489c>
+				配置
+			</button></div> <div class="code-editor-tools" data-v-51c0489c><!----> <a href="https://github.com//blob/master/docs/zh/samples/charts/bubble.md" title="View on GitHub" target="_blank" class="code-editor-tool fab fa-github fa-lg" data-v-51c0489c></a></div></div> <div class="code-editor-views" data-v-51c0489c><div class="editor-textarea ps" data-v-5328feae data-v-51c0489c><div class="editor-textarea-content" data-v-5328feae><div class="prism-editor-wrapper" data-v-5328feae><div class="prism-editor__container"><textarea spellCheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" data-gramm="false" placeholder="" data-testid="textarea" class="prism-editor__textarea">const config = {
+    'type': 'line',
+    'data': {
+        'labels': [
+            0,
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            50,
+            55,
+            60
+        ],
+        'datasets': [
+            {
+                'data': [
+                    6,
+                    11,
+                    10,
+                    10,
+                    3,
+                    22,
+                    7,
+                    24
+                ],
+                'type': 'bubble',
+                'label': 'test',
+                'borderColor': '#3e95cd',
+                'fill': false
+            }
+        ]
+    },
+    'options': {
+        'scales': {
+            'x': {
+                'ticks': {
+                    'display': false
+                }
+            },
+            'y': {
+                'min': 8,
+                'max': 25,
+                'beginAtZero': true,
+                'ticks': {
+                    'display': false
+                }
+            }
+        }
+    }
+};
+module.exports = {
+	config: config
+}
+</textarea><pre data-testid="preview" class="prism-editor__editor"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'type'</span><span class="token operator">:</span> <span class="token string">'line'</span><span class="token punctuation">,</span>
+    <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'labels'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token number">0</span><span class="token punctuation">,</span>
+            <span class="token number">5</span><span class="token punctuation">,</span>
+            <span class="token number">10</span><span class="token punctuation">,</span>
+            <span class="token number">15</span><span class="token punctuation">,</span>
+            <span class="token number">20</span><span class="token punctuation">,</span>
+            <span class="token number">25</span><span class="token punctuation">,</span>
+            <span class="token number">30</span><span class="token punctuation">,</span>
+            <span class="token number">50</span><span class="token punctuation">,</span>
+            <span class="token number">55</span><span class="token punctuation">,</span>
+            <span class="token number">60</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">'datasets'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token number">6</span><span class="token punctuation">,</span>
+                    <span class="token number">11</span><span class="token punctuation">,</span>
+                    <span class="token number">10</span><span class="token punctuation">,</span>
+                    <span class="token number">10</span><span class="token punctuation">,</span>
+                    <span class="token number">3</span><span class="token punctuation">,</span>
+                    <span class="token number">22</span><span class="token punctuation">,</span>
+                    <span class="token number">7</span><span class="token punctuation">,</span>
+                    <span class="token number">24</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">'type'</span><span class="token operator">:</span> <span class="token string">'bubble'</span><span class="token punctuation">,</span>
+                <span class="token string">'label'</span><span class="token operator">:</span> <span class="token string">'test'</span><span class="token punctuation">,</span>
+                <span class="token string">'borderColor'</span><span class="token operator">:</span> <span class="token string">'#3e95cd'</span><span class="token punctuation">,</span>
+                <span class="token string">'fill'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'options'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'scales'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'x'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'ticks'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token string">'display'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">'y'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'min'</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+                <span class="token string">'max'</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+                <span class="token string">'beginAtZero'</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                <span class="token string">'ticks'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token string">'display'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+	config<span class="token operator">:</span> config
+<span class="token punctuation">}</span>
+<br /></pre></div></div></div></div></div></div></div><div class="chart-editor" data-v-62cab2ba><div class="chart-view" data-v-62cab2ba><canvas></canvas></div> <div class="chart-actions" data-v-477f40a4 data-v-62cab2ba></div> <div class="code-editor" data-v-51c0489c data-v-62cab2ba><div class="code-editor-header" data-v-51c0489c><div class="code-editor-tabs" data-v-51c0489c><button class="code-editor-tab active" data-v-51c0489c>
+				配置
+			</button></div> <div class="code-editor-tools" data-v-51c0489c><!----> <a href="https://github.com//blob/master/docs/zh/samples/charts/bubble.md" title="View on GitHub" target="_blank" class="code-editor-tool fab fa-github fa-lg" data-v-51c0489c></a></div></div> <div class="code-editor-views" data-v-51c0489c><div class="editor-textarea ps" data-v-5328feae data-v-51c0489c><div class="editor-textarea-content" data-v-5328feae><div class="prism-editor-wrapper" data-v-5328feae><div class="prism-editor__container"><textarea spellCheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" data-gramm="false" placeholder="" data-testid="textarea" class="prism-editor__textarea">const config = {
+    'type': 'bubble',
+    'data': {
+        'datasets': [
+            {
+                'data': [
+                    {
+                        'x': 0,
+                        'y': 3
+                    },
+                    {
+                        'x': 1,
+                        'y': 3
+                    },
+                    {
+                        'x': 2,
+                        'y': 3
+                    },
+                    {
+                        'x': 3,
+                        'y': 3
+                    },
+                    {
+                        'x': 4,
+                        'y': 3
+                    },
+                    {
+                        'x': 5,
+                        'y': 3
+                    },
+                    {
+                        'x': 6,
+                        'y': 3
+                    },
+                    {
+                        'x': 7,
+                        'y': 3
+                    },
+                    {
+                        'x': 8,
+                        'y': 3
+                    },
+                    {
+                        'x': 9,
+                        'y': 3
+                    }
+                ],
+                'backgroundColor': '#00ff00',
+                'borderColor': 'transparent',
+                'borderWidth': 0,
+                'pointStyle': [
+                    'circle',
+                    'cross',
+                    'crossRot',
+                    'dash',
+                    'line',
+                    'rect',
+                    'rectRounded',
+                    'rectRot',
+                    'star',
+                    'triangle'
+                ]
+            },
+            {
+                'data': [
+                    {
+                        'x': 0,
+                        'y': 2
+                    },
+                    {
+                        'x': 1,
+                        'y': 2
+                    },
+                    {
+                        'x': 2,
+                        'y': 2
+                    },
+                    {
+                        'x': 3,
+                        'y': 2
+                    },
+                    {
+                        'x': 4,
+                        'y': 2
+                    },
+                    {
+                        'x': 5,
+                        'y': 2
+                    },
+                    {
+                        'x': 6,
+                        'y': 2
+                    },
+                    {
+                        'x': 7,
+                        'y': 2
+                    },
+                    {
+                        'x': 8,
+                        'y': 2
+                    },
+                    {
+                        'x': 9,
+                        'y': 2
+                    }
+                ],
+                'backgroundColor': 'transparent',
+                'borderColor': '#0000ff',
+                'borderWidth': 1,
+                'pointStyle': [
+                    'circle',
+                    'cross',
+                    'crossRot',
+                    'dash',
+                    'line',
+                    'rect',
+                    'rectRounded',
+                    'rectRot',
+                    'star',
+                    'triangle'
+                ]
+            },
+            {
+                'data': [
+                    {
+                        'x': 0,
+                        'y': 1
+                    },
+                    {
+                        'x': 1,
+                        'y': 1
+                    },
+                    {
+                        'x': 2,
+                        'y': 1
+                    },
+                    {
+                        'x': 3,
+                        'y': 1
+                    },
+                    {
+                        'x': 4,
+                        'y': 1
+                    },
+                    {
+                        'x': 5,
+                        'y': 1
+                    },
+                    {
+                        'x': 6,
+                        'y': 1
+                    },
+                    {
+                        'x': 7,
+                        'y': 1
+                    },
+                    {
+                        'x': 8,
+                        'y': 1
+                    },
+                    {
+                        'x': 9,
+                        'y': 1
+                    }
+                ],
+                'backgroundColor': '#00ff00',
+                'borderColor': '#0000ff',
+                'borderWidth': 1,
+                'pointStyle': [
+                    'circle',
+                    'cross',
+                    'crossRot',
+                    'dash',
+                    'line',
+                    'rect',
+                    'rectRounded',
+                    'rectRot',
+                    'star',
+                    'triangle'
+                ]
+            }
+        ]
+    },
+    'options': {
+        'responsive': false,
+        'scales': {
+            'x': {
+                'display': false
+            },
+            'y': {
+                'display': false,
+                'min': 0,
+                'max': 4
+            }
+        },
+        'elements': {
+            'line': {
+                'borderColor': 'transparent',
+                'borderWidth': 1,
+                'fill': false
+            },
+            'point': {
+                'radius': 16
+            }
+        },
+        'layout': {
+            'padding': {
+                'left': 24,
+                'right': 24
+            }
+        }
+    }
+};
+module.exports = {
+	config: config
+}
+</textarea><pre data-testid="preview" class="prism-editor__editor"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'type'</span><span class="token operator">:</span> <span class="token string">'bubble'</span><span class="token punctuation">,</span>
+    <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'datasets'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">'backgroundColor'</span><span class="token operator">:</span> <span class="token string">'#00ff00'</span><span class="token punctuation">,</span>
+                <span class="token string">'borderColor'</span><span class="token operator">:</span> <span class="token string">'transparent'</span><span class="token punctuation">,</span>
+                <span class="token string">'borderWidth'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token string">'pointStyle'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'circle'</span><span class="token punctuation">,</span>
+                    <span class="token string">'cross'</span><span class="token punctuation">,</span>
+                    <span class="token string">'crossRot'</span><span class="token punctuation">,</span>
+                    <span class="token string">'dash'</span><span class="token punctuation">,</span>
+                    <span class="token string">'line'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rect'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rectRounded'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rectRot'</span><span class="token punctuation">,</span>
+                    <span class="token string">'star'</span><span class="token punctuation">,</span>
+                    <span class="token string">'triangle'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">'backgroundColor'</span><span class="token operator">:</span> <span class="token string">'transparent'</span><span class="token punctuation">,</span>
+                <span class="token string">'borderColor'</span><span class="token operator">:</span> <span class="token string">'#0000ff'</span><span class="token punctuation">,</span>
+                <span class="token string">'borderWidth'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                <span class="token string">'pointStyle'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'circle'</span><span class="token punctuation">,</span>
+                    <span class="token string">'cross'</span><span class="token punctuation">,</span>
+                    <span class="token string">'crossRot'</span><span class="token punctuation">,</span>
+                    <span class="token string">'dash'</span><span class="token punctuation">,</span>
+                    <span class="token string">'line'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rect'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rectRounded'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rectRot'</span><span class="token punctuation">,</span>
+                    <span class="token string">'star'</span><span class="token punctuation">,</span>
+                    <span class="token string">'triangle'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">'backgroundColor'</span><span class="token operator">:</span> <span class="token string">'#00ff00'</span><span class="token punctuation">,</span>
+                <span class="token string">'borderColor'</span><span class="token operator">:</span> <span class="token string">'#0000ff'</span><span class="token punctuation">,</span>
+                <span class="token string">'borderWidth'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                <span class="token string">'pointStyle'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'circle'</span><span class="token punctuation">,</span>
+                    <span class="token string">'cross'</span><span class="token punctuation">,</span>
+                    <span class="token string">'crossRot'</span><span class="token punctuation">,</span>
+                    <span class="token string">'dash'</span><span class="token punctuation">,</span>
+                    <span class="token string">'line'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rect'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rectRounded'</span><span class="token punctuation">,</span>
+                    <span class="token string">'rectRot'</span><span class="token punctuation">,</span>
+                    <span class="token string">'star'</span><span class="token punctuation">,</span>
+                    <span class="token string">'triangle'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'options'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'responsive'</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token string">'scales'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'x'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'display'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">'y'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'display'</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+                <span class="token string">'min'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token string">'max'</span><span class="token operator">:</span> <span class="token number">4</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'elements'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'line'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'borderColor'</span><span class="token operator">:</span> <span class="token string">'transparent'</span><span class="token punctuation">,</span>
+                <span class="token string">'borderWidth'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                <span class="token string">'fill'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">'point'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'radius'</span><span class="token operator">:</span> <span class="token number">16</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'layout'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'padding'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'left'</span><span class="token operator">:</span> <span class="token number">24</span><span class="token punctuation">,</span>
+                <span class="token string">'right'</span><span class="token operator">:</span> <span class="token number">24</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+	config<span class="token operator">:</span> config
+<span class="token punctuation">}</span>
+<br /></pre></div></div></div></div></div></div></div><div class="chart-editor" data-v-62cab2ba><div class="chart-view" data-v-62cab2ba><canvas></canvas></div> <div class="chart-actions" data-v-477f40a4 data-v-62cab2ba></div> <div class="code-editor" data-v-51c0489c data-v-62cab2ba><div class="code-editor-header" data-v-51c0489c><div class="code-editor-tabs" data-v-51c0489c><button class="code-editor-tab active" data-v-51c0489c>
+				配置
+			</button></div> <div class="code-editor-tools" data-v-51c0489c><!----> <a href="https://github.com//blob/master/docs/zh/samples/charts/bubble.md" title="View on GitHub" target="_blank" class="code-editor-tool fab fa-github fa-lg" data-v-51c0489c></a></div></div> <div class="code-editor-views" data-v-51c0489c><div class="editor-textarea ps" data-v-5328feae data-v-51c0489c><div class="editor-textarea-content" data-v-5328feae><div class="prism-editor-wrapper" data-v-5328feae><div class="prism-editor__container"><textarea spellCheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" data-gramm="false" placeholder="" data-testid="textarea" class="prism-editor__textarea">const config = {
+    'type': 'bubble',
+    'data': {
+        'datasets': [
+            {
+                'data': [
+                    {
+                        'x': 0,
+                        'y': 5,
+                        'r': 1
+                    },
+                    {
+                        'x': 1,
+                        'y': 4,
+                        'r': 2
+                    },
+                    {
+                        'x': 2,
+                        'y': 3,
+                        'r': 6
+                    },
+                    {
+                        'x': 3,
+                        'y': 2
+                    },
+                    {
+                        'x': 4,
+                        'y': 1,
+                        'r': 2
+                    },
+                    {
+                        'x': 5,
+                        'y': 0,
+                        'r': null
+                    },
+                    {
+                        'x': 6,
+                        'y': -1
+                    },
+                    {
+                        'x': 7,
+                        'y': -2,
+                        'r': null
+                    },
+                    {
+                        'x': 8,
+                        'y': -3,
+                        'r': '4'
+                    },
+                    {
+                        'x': 9,
+                        'y': -4,
+                        'r': '4px'
+                    }
+                ]
+            }
+        ]
+    },
+    'options': {
+        'scales': {
+            'x': {
+                'display': false
+            },
+            'y': {
+                'display': false
+            }
+        },
+        'elements': {
+            'point': {
+                'backgroundColor': '#444',
+                'radius': 10
+            }
+        },
+        'layout': {
+            'padding': {
+                'left': 24,
+                'right': 24
+            }
+        }
+    }
+};
+module.exports = {
+	config: config
+}
+</textarea><pre data-testid="preview" class="prism-editor__editor"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'type'</span><span class="token operator">:</span> <span class="token string">'bubble'</span><span class="token punctuation">,</span>
+    <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'datasets'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+                        <span class="token string">'r'</span><span class="token operator">:</span> <span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+                        <span class="token string">'r'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                        <span class="token string">'r'</span><span class="token operator">:</span> <span class="token number">6</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        <span class="token string">'r'</span><span class="token operator">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                        <span class="token string">'r'</span><span class="token operator">:</span> <span class="token keyword">null</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span>
+                        <span class="token string">'r'</span><span class="token operator">:</span> <span class="token keyword">null</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span>
+                        <span class="token string">'r'</span><span class="token operator">:</span> <span class="token string">'4'</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span>
+                        <span class="token string">'r'</span><span class="token operator">:</span> <span class="token string">'4px'</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'options'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'scales'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'x'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'display'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">'y'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'display'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'elements'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'point'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'backgroundColor'</span><span class="token operator">:</span> <span class="token string">'#444'</span><span class="token punctuation">,</span>
+                <span class="token string">'radius'</span><span class="token operator">:</span> <span class="token number">10</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'layout'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'padding'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'left'</span><span class="token operator">:</span> <span class="token number">24</span><span class="token punctuation">,</span>
+                <span class="token string">'right'</span><span class="token operator">:</span> <span class="token number">24</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+	config<span class="token operator">:</span> config
+<span class="token punctuation">}</span>
+<br /></pre></div></div></div></div></div></div></div><div class="chart-editor" data-v-62cab2ba><div class="chart-view" data-v-62cab2ba><canvas></canvas></div> <div class="chart-actions" data-v-477f40a4 data-v-62cab2ba></div> <div class="code-editor" data-v-51c0489c data-v-62cab2ba><div class="code-editor-header" data-v-51c0489c><div class="code-editor-tabs" data-v-51c0489c><button class="code-editor-tab active" data-v-51c0489c>
+				配置
+			</button></div> <div class="code-editor-tools" data-v-51c0489c><!----> <a href="https://github.com//blob/master/docs/zh/samples/charts/bubble.md" title="View on GitHub" target="_blank" class="code-editor-tool fab fa-github fa-lg" data-v-51c0489c></a></div></div> <div class="code-editor-views" data-v-51c0489c><div class="editor-textarea ps" data-v-5328feae data-v-51c0489c><div class="editor-textarea-content" data-v-5328feae><div class="prism-editor-wrapper" data-v-5328feae><div class="prism-editor__container"><textarea spellCheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" data-gramm="false" placeholder="" data-testid="textarea" class="prism-editor__textarea">const config = {
+    'type': 'bubble',
+    'data': {
+        'datasets': [
+            {
+                'data': [
+                    {
+                        'x': 0,
+                        'y': 0
+                    },
+                    {
+                        'x': 1,
+                        'y': 0
+                    },
+                    {
+                        'x': 2,
+                        'y': 0
+                    },
+                    {
+                        'x': 3,
+                        'y': 0
+                    },
+                    {
+                        'x': 4,
+                        'y': 0
+                    },
+                    {
+                        'x': 5,
+                        'y': 0
+                    }
+                ]
+            }
+        ]
+    },
+    'options': {
+        'scales': {
+            'x': {
+                'display': false
+            },
+            'y': {
+                'display': false
+            }
+        },
+        'elements': {
+            'point': {
+                'backgroundColor': '#444'
+            }
+        },
+        'layout': {
+            'padding': {
+                'left': 24,
+                'right': 24
+            }
+        }
+    }
+};
+module.exports = {
+	config: config
+}
+</textarea><pre data-testid="preview" class="prism-editor__editor"><span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'type'</span><span class="token operator">:</span> <span class="token string">'bubble'</span><span class="token punctuation">,</span>
+    <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'datasets'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">'data'</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">0</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">0</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">0</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">0</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">0</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        <span class="token string">'x'</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+                        <span class="token string">'y'</span><span class="token operator">:</span> <span class="token number">0</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'options'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'scales'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'x'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'display'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">'y'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'display'</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'elements'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'point'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'backgroundColor'</span><span class="token operator">:</span> <span class="token string">'#444'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">'layout'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">'padding'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token string">'left'</span><span class="token operator">:</span> <span class="token number">24</span><span class="token punctuation">,</span>
+                <span class="token string">'right'</span><span class="token operator">:</span> <span class="token number">24</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+	config<span class="token operator">:</span> config
+<span class="token punctuation">}</span>
+<br /></pre></div></div></div></div></div></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2021-2-1 16:40:46</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Chart.js-zh-docs/zh/samples/charts/bar.html" class="prev">
+        柱形图
+      </a></span> <span class="next"><a href="/Chart.js-zh-docs/zh/samples/charts/doughnut.html">
+        环形图
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Chart.js-zh-docs/assets/js/app.6aa5dc58.js" defer></script><script src="/Chart.js-zh-docs/assets/js/2.9c21abb6.js" defer></script><script src="/Chart.js-zh-docs/assets/js/109.fb773c52.js" defer></script>
+  </body>
+</html>
